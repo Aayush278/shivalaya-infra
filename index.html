@@ -243,18 +243,23 @@
             min-height: 500px;
             position: relative;
             overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            transform: none !important;
             z-index: 0;
         }
 
@@ -1862,7 +1867,7 @@
     </div>
 
     <section class="hero-section">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <video class="hero-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
             <source src="vidhome2.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -2078,7 +2083,7 @@
                 <p class="inside-infra-subtitle">Experience our commitment to quality and excellence</p>
             </div>
             <div class="inside-infra-grid">
-                <div class="vertical-video-item fade-in" data-video="vidsit.mp4">
+                <div class="vertical-video-item fade-in" data-video="vid7.mp4">
                     <div class="vertical-video-wrapper">
                         <img src="Screenshot (141).png" alt="Construction">
                         <div class="video-play-overlay">
