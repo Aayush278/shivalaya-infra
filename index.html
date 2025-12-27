@@ -58,12 +58,16 @@
 
         .preloader-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: clamp(1.2rem, 5vw, 2rem);
             font-weight: 600;
             color: var(--primary-gold);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             margin-bottom: 2rem;
             animation: pulse 2s ease-in-out infinite;
+            text-align: center;
+            padding: 0 1rem;
+            width: 100%;
+            max-width: 90%;
         }
 
         .preloader-bar {
