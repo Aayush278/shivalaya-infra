@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivalay Infratech - Premium Real Estate Excellence in Indore</title>
-    <meta name="description" content="13+ years of trust. 500+ happy families. 100% RERA approved properties in Indore.">
+    <meta name="description"
+        content="13+ years of trust. 500+ happy families. 100% RERA approved properties in Indore.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,12 +20,500 @@
         }
 
         :root {
-            --primary-gold: #b8956a;
-            --dark: #1a1a1a;
-            --light-gray: #f5f5f5;
-            --mid-gray: #666;
+            --primary-gold: #c9a86c;
+            --primary-gold-dark: #a37d4e;
+            --primary-gold-light: #dfc89e;
+            --dark: #0f0f0f;
+            --dark-secondary: #1a1a1a;
+            --light-gray: #f8f9fa;
+            --mid-gray: #6c757d;
             --white: #ffffff;
             --accent-blue: #4a7ba7;
+            --gradient-gold: linear-gradient(135deg, #c9a86c 0%, #a37d4e 50%, #8b6914 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            --shadow-gold: 0 10px 40px rgba(201, 168, 108, 0.3);
+            --shadow-dark: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .preloader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(201, 168, 108, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .preloader-progress {
+            height: 100%;
+            background: var(--gradient-gold);
+            width: 0%;
+            animation: loading 2s ease-in-out forwards;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+
+            50% {
+                width: 70%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatBounce 3s ease-in-out infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .floating-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .floating-whatsapp::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            z-index: -1;
+            animation: ripple 2s ease-out infinite;
+        }
+
+        @keyframes floatBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        /* Animated Text Effect */
+        .animated-text {
+            overflow: hidden;
+        }
+
+        .animated-text span {
+            display: inline-block;
+            animation: slideUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(100%);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glassmorphism Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Glow Effects */
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(201, 168, 108, 0.3),
+                0 0 40px rgba(201, 168, 108, 0.2),
+                0 0 60px rgba(201, 168, 108, 0.1);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Particle Background */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(201, 168, 108, 0.6);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Section Transitions */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger Animation */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 1.5rem;
+            background: linear-gradient(180deg, var(--light-gray) 0%, #fff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-title {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 2px;
+            position: relative;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 6rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(201, 168, 108, 0.15);
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.75rem;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.2rem;
+            margin-top: 1rem;
+        }
+
+        .testimonial-rating svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary-gold);
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        /* Enhanced Scroll Animation */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 2s forwards;
+            opacity: 0;
+        }
+
+        .scroll-indicator .mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-indicator .wheel {
+            width: 4px;
+            height: 8px;
+            background: var(--primary-gold);
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollWheel {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 3D Card Hover Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+
+        /* Cursor Trail Effect */
+        .cursor-glow {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(201, 168, 108, 0.4) 0%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        /* Counter Animation */
+        .counter-animated {
+            display: inline-block;
         }
 
         body {
@@ -33,7 +525,11 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             letter-spacing: 2px;
@@ -50,7 +546,7 @@
         }
 
         header.scrolled {
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
         nav {
@@ -157,7 +653,7 @@
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
             padding: 5rem 2rem 2rem;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
         }
 
         .mobile-menu.active {
@@ -285,7 +781,7 @@
             width: 90%;
             max-width: 600px;
             padding: 0 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .featured-tag {
@@ -512,7 +1008,7 @@
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             border-color: var(--primary-gold);
         }
 
@@ -697,7 +1193,7 @@
         .why-us-item:hover {
             border-color: var(--primary-gold);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .why-us-icon {
@@ -972,6 +1468,7 @@
                 opacity: 0;
                 transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1077,7 +1574,7 @@
         .form-submit:hover {
             background: var(--dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         @media (min-width: 768px) {
@@ -1349,7 +1846,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
             padding: 3rem 1.5rem 1.5rem;
             z-index: 1;
         }
@@ -1469,7 +1966,7 @@
             border-radius: 50%;
             padding: 22px;
             transition: all 0.3s ease;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
         }
 
         .property-video-card:hover .play-btn-large {
@@ -1482,7 +1979,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.8) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 60%, transparent 100%);
             padding: 4rem 1.5rem 1.5rem;
             z-index: 1;
         }
@@ -1629,7 +2126,7 @@
         .gallery-item:hover {
             border-color: var(--primary-gold);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-item img {
@@ -1648,7 +2145,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
             padding: 2rem 1.5rem 1rem;
             transform: translateY(100%);
             transition: transform 0.4s;
@@ -1730,6 +2227,7 @@
                 opacity: 0;
                 transform: translateY(30px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -1815,13 +2313,31 @@
                 height: 320px;
             }
 
+
             .video-player-content {
                 max-width: 700px;
             }
         }
     </style>
 </head>
+
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">SHIVALAY INFRATECH</div>
+        <div class="preloader-bar">
+            <div class="preloader-progress"></div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919589524809" class="floating-whatsapp" title="Chat on WhatsApp" target="_blank">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
     <header>
         <nav>
             <div class="logo">
@@ -1856,18 +2372,28 @@
         <button class="mobile-book-btn" id="mobileBook">Book Site Visit</button>
         <div class="mobile-contact-links">
             <a href="tel:+919589524809" class="mobile-contact-link">
-                <svg viewBox="0 0 24 24"><path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/><path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
+                    <path
+                        d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
+                </svg>
                 CALL NOW
             </a>
             <a href="https://wa.me/919589524809" class="mobile-contact-link">
-                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
                 WHATSAPP
             </a>
         </div>
     </div>
 
     <section class="hero-section">
-        <video class="hero-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+        <!-- Particles Container -->
+        <div class="particles-container" id="particles"></div>
+        <video class="hero-video" autoplay muted loop playsinline
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
             <source src="vidhome2.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -1885,9 +2411,14 @@
             <div class="about-text fade-in">
                 <div class="section-label">ABOUT SHIVALAY INFRATECH</div>
                 <h2 class="about-title">Building Trust, Delivering Dreams</h2>
-                <p>Since 2012, Shivalay Infratech has been Indore's trusted name in premium real estate development. With over 13 years of excellence, we have successfully delivered 25+ projects, creating homes for more than 500 happy families.</p>
-                <p>Our commitment to 100% RERA compliance, transparent dealings, and timely delivery has made us a preferred choice for discerning homebuyers. Every project reflects our dedication to quality construction, modern amenities, and prime locations.</p>
-                <p>We don't just build properties – we create communities where families thrive and memories are made.</p>
+                <p>Since 2012, Shivalay Infratech has been Indore's trusted name in premium real estate development.
+                    With over 13 years of excellence, we have successfully delivered 25+ projects, creating homes for
+                    more than 500 happy families.</p>
+                <p>Our commitment to 100% RERA compliance, transparent dealings, and timely delivery has made us a
+                    preferred choice for discerning homebuyers. Every project reflects our dedication to quality
+                    construction, modern amenities, and prime locations.</p>
+                <p>We don't just build properties – we create communities where families thrive and memories are made.
+                </p>
                 <a href="#contact" class="read-more-btn">Schedule Site Visit</a>
             </div>
             <div class="about-image fade-in">
@@ -1935,7 +2466,8 @@
                     <div class="project-info">
                         <div class="project-category">PLOTS • UJJAIN ROAD</div>
                         <h3 class="project-title">Shanti Vihar</h3>
-                        <p class="project-description">Premium plots with 70% loan facility, double road access, and full building permits. Eco-friendly community with modern amenities.</p>
+                        <p class="project-description">Premium plots with 70% loan facility, double road access, and
+                            full building permits. Eco-friendly community with modern amenities.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
@@ -1947,7 +2479,8 @@
                     <div class="project-info">
                         <div class="project-category">APARTMENTS • FROM ₹52.79L</div>
                         <h3 class="project-title">Sankeshwar City</h3>
-                        <p class="project-description">2BHK, 2.5BHK & 3BHK apartments opposite Aurobindo Hospital. Modular kitchen, gymnasium, terrace garden. Free registration & stamp duty.</p>
+                        <p class="project-description">2BHK, 2.5BHK & 3BHK apartments opposite Aurobindo Hospital.
+                            Modular kitchen, gymnasium, terrace garden. Free registration & stamp duty.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
@@ -1959,12 +2492,13 @@
                     <div class="project-info">
                         <div class="project-category">READY POSSESSION • ₹27L</div>
                         <h3 class="project-title">Orion Sky</h3>
-                        <p class="project-description">1 BHK at Kanak Smart City with registry free. Gated community near Aurobindo Hospital, 5 min to Metro. Green parks and bike paths.</p>
+                        <p class="project-description">1 BHK at Kanak Smart City with registry free. Gated community
+                            near Aurobindo Hospital, 5 min to Metro. Green parks and bike paths.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
 
-                            </div>
+            </div>
         </div>
     </section>
 
@@ -1979,25 +2513,32 @@
                 <p class="founder-role">Founder & Managing Director</p>
 
                 <p class="founder-bio">
-                    Shiv Malviya founded Shivalay Infratech in 2012 with a vision to provide quality homes to families in Indore. With over 13 years of excellence in real estate development, he has established the company as one of the most trusted names in Indore's property market.
+                    Shiv Malviya founded Shivalay Infratech in 2012 with a vision to provide quality homes to families
+                    in Indore. With over 13 years of excellence in real estate development, he has established the
+                    company as one of the most trusted names in Indore's property market.
                 </p>
 
                 <p class="founder-bio">
-                    Under his leadership, Shivalay Infratech has delivered 25+ successful projects, providing dream homes to over 500 happy families. Every project reflects his commitment to 100% RERA compliance, transparent business practices, and customer satisfaction.
+                    Under his leadership, Shivalay Infratech has delivered 25+ successful projects, providing dream
+                    homes to over 500 happy families. Every project reflects his commitment to 100% RERA compliance,
+                    transparent business practices, and customer satisfaction.
                 </p>
 
                 <p class="founder-bio">
-                    His dedication to quality, ethical practices, and modern amenities has made Shivalay Infratech synonymous with reliability in Indore's real estate sector.
+                    His dedication to quality, ethical practices, and modern amenities has made Shivalay Infratech
+                    synonymous with reliability in Indore's real estate sector.
                 </p>
 
                 <div class="founder-credentials">
                     <div class="credential-item">
                         <div class="credential-label">EXPERIENCE</div>
-                        <div class="credential-value">13+ Years in Real Estate Development<br>25+ Projects Delivered<br>500+ Happy Families</div>
+                        <div class="credential-value">13+ Years in Real Estate Development<br>25+ Projects
+                            Delivered<br>500+ Happy Families</div>
                     </div>
                     <div class="credential-item">
                         <div class="credential-label">CERTIFICATIONS</div>
-                        <div class="credential-value">100% RERA Approved Projects<br>Transparent Business Practices<br>Quality Construction Standards</div>
+                        <div class="credential-value">100% RERA Approved Projects<br>Transparent Business
+                            Practices<br>Quality Construction Standards</div>
                     </div>
                 </div>
             </div>
@@ -2014,61 +2555,71 @@
                 <div class="why-us-item fade-in">
                     <div class="why-us-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3>100% RERA Approved</h3>
-                    <p>All our projects are registered and compliant with RERA regulations, ensuring complete legal transparency and buyer protection.</p>
+                    <p>All our projects are registered and compliant with RERA regulations, ensuring complete legal
+                        transparency and buyer protection.</p>
                 </div>
 
                 <div class="why-us-item fade-in">
                     <div class="why-us-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3>Timely Delivery</h3>
-                    <p>We pride ourselves on delivering projects on time. Our track record speaks for our commitment to promised possession dates.</p>
+                    <p>We pride ourselves on delivering projects on time. Our track record speaks for our commitment to
+                        promised possession dates.</p>
                 </div>
 
                 <div class="why-us-item fade-in">
                     <div class="why-us-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3>Transparent Pricing</h3>
-                    <p>No hidden costs or last-minute surprises. Our pricing is straightforward and honest, building trust with every transaction.</p>
+                    <p>No hidden costs or last-minute surprises. Our pricing is straightforward and honest, building
+                        trust with every transaction.</p>
                 </div>
 
                 <div class="why-us-item fade-in">
                     <div class="why-us-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            <path
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                     </div>
                     <h3>Prime Locations</h3>
-                    <p>Strategic locations across Indore with excellent connectivity to schools, hospitals, metro, and commercial hubs.</p>
+                    <p>Strategic locations across Indore with excellent connectivity to schools, hospitals, metro, and
+                        commercial hubs.</p>
                 </div>
 
                 <div class="why-us-item fade-in">
                     <div class="why-us-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            <path
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
                     <h3>Quality Construction</h3>
-                    <p>Premium materials and best construction practices in every project. We never compromise on structural integrity and finishing.</p>
+                    <p>Premium materials and best construction practices in every project. We never compromise on
+                        structural integrity and finishing.</p>
                 </div>
 
                 <div class="why-us-item fade-in">
                     <div class="why-us-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            <path
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <h3>Customer First</h3>
-                    <p>Dedicated support from booking to possession and beyond. Our relationship doesn't end at key handover.</p>
+                    <p>Dedicated support from booking to possession and beyond. Our relationship doesn't end at key
+                        handover.</p>
                 </div>
             </div>
         </div>
@@ -2087,7 +2638,8 @@
                     <div class="vertical-video-wrapper">
                         <img src="Screenshot (141).png" alt="Construction">
                         <div class="video-play-overlay">
-                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
                             </svg>
@@ -2104,7 +2656,8 @@
                     <div class="vertical-video-wrapper">
                         <img src="Screenshot (142).png" alt="Team">
                         <div class="video-play-overlay">
-                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
                             </svg>
@@ -2121,7 +2674,8 @@
                     <div class="vertical-video-wrapper">
                         <img src="Screenshot (143).png" alt="Quality">
                         <div class="video-play-overlay">
-                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
                             </svg>
@@ -2150,7 +2704,8 @@
                     <div class="property-video-wrapper">
                         <img src="Screenshot (144).png" alt="Sankeshwar">
                         <div class="property-play-overlay">
-                            <svg class="play-btn-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="play-btn-large" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
                             </svg>
@@ -2159,9 +2714,10 @@
                             <div class="property-badge">FEATURED</div>
                             <div class="property-details">
                                 <h3>Perfect Home </h3>
-                                
+
                                 <p class="property-location">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
@@ -2176,7 +2732,8 @@
                     <div class="property-video-wrapper">
                         <img src="office.jpg" alt="Orion">
                         <div class="property-play-overlay">
-                            <svg class="play-btn-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="play-btn-large" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
                             </svg>
@@ -2186,11 +2743,12 @@
                             <div class="property-details">
                                 <h3>Shri vidya vihar </h3>
                                 <p class="property-location">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
-                                    Premium colony 
+                                    Premium colony
                                 </p>
                                 <div class="property-price">Ready to settle</div>
                             </div>
@@ -2208,62 +2766,101 @@
                 <h2 class="image-gallery-title">Project Gallery</h2>
                 <p class="image-gallery-subtitle">Explore our developments</p>
             </div>
-            
+
             <div class="gallery-scroll-wrapper">
                 <div class="gallery-scroll-container" id="galleryContainer">
                     <div class="gallery-item">
                         <img src="Screenshot (125).png" alt="Gallery 1">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 1</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 1</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (126).png" alt="Gallery 2">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 2</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 2</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (127).png" alt="Gallery 3">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 3</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 3</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (128).png" alt="Gallery 4">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 4</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 4</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (130).png" alt="Gallery 5">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 5</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 5</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (132).png" alt="Gallery 6">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 6</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 6</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (133).png" alt="Gallery 7">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 7</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 7</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (135).png" alt="Gallery 8">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 8</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 8</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (125).png" alt="Gallery 9">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 9</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 9</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (127).png" alt="Gallery 10">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 10</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 10</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (138).png" alt="Gallery 11">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 11</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 11</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (137).png" alt="Gallery 12">
-                        <div class="gallery-overlay"><h4>Shivalay infrar</h4><p>View 12</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infrar</h4>
+                            <p>View 12</p>
+                        </div>
                     </div>
                     <div class="gallery-item">
                         <img src="Screenshot (134).png" alt="Gallery 13">
-                        <div class="gallery-overlay"><h4>Shivalay infra</h4><p>View 13</p></div>
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 13</p>
+                        </div>
                     </div>
-                    
+
     </section>
 
     <div class="video-player-modal" id="videoPlayerModal">
@@ -2284,7 +2881,8 @@
     <section id="contact" class="cta-section">
         <div class="cta-content">
             <h2 class="cta-title">Find Your Dream Home</h2>
-            <p class="cta-text">Explore our RERA approved projects with modern amenities and prime locations in Indore. Schedule a site visit today and take the first step towards owning your dream home.</p>
+            <p class="cta-text">Explore our RERA approved projects with modern amenities and prime locations in Indore.
+                Schedule a site visit today and take the first step towards owning your dream home.</p>
             <button class="contact-btn" id="ctaBook">Book Site Visit</button>
         </div>
     </section>
@@ -2293,37 +2891,44 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Shivalay Infratech</h3>
-                <p>Premium residential properties in Indore with 13 years of excellence and 100% RERA approved projects. Trusted by 500+ happy families.</p>
+                <p>Premium residential properties in Indore with 13 years of excellence and 100% RERA approved projects.
+                    Trusted by 500+ happy families.</p>
                 <div class="social-links">
                     <a href="https://wa.me/919589524809" class="social-link" title="WhatsApp">
                         <svg viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
                     </a>
                     <a href="tel:+919589524809" class="social-link" title="Phone">
                         <svg viewBox="0 0 24 24">
-                            <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
-                            <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/>
+                            <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
+                            <path
+                                d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
                         </svg>
                     </a>
                     <a href="mailto:shivalayinfratech@gmail.com" class="social-link" title="Email">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            <path
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </a>
                     <a href="https://facebook.com" class="social-link" title="Facebook">
                         <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
                     <a href="https://instagram.com" class="social-link" title="Instagram">
                         <svg viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                     </a>
                     <a href="https://linkedin.com" class="social-link" title="LinkedIn">
                         <svg viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                     </a>
                 </div>
@@ -2353,21 +2958,24 @@
                 <h3>Contact</h3>
                 <div class="contact-info-item">
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                     </svg>
                     <p>Kanak Smart City, Indore</p>
                 </div>
                 <div class="contact-info-item">
                     <svg viewBox="0 0 24 24">
-                        <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
-                        <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/>
+                        <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
+                        <path
+                            d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
                     </svg>
                     <p>+91 9589524809</p>
                 </div>
                 <div class="contact-info-item">
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                        <path
+                            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z" />
                     </svg>
                     <p>Mon - Sat: 10 AM - 7 PM</p>
                 </div>
@@ -2376,7 +2984,8 @@
 
         <div class="footer-bottom">
             <p>2025 Shivalay Infratech. All Rights Reserved.<br>100% RERA Approved | Indore, Madhya Pradesh</p>
-            <p class="footer-credit">Made by <a href="https://raweditt.com" target="_blank">Raweditt</a> in collaboration with <a href="https://thesemicolon.online" target="_blank">Semicolon</a></p>
+            <p class="footer-credit">Made by <a href="https://raweditt.com" target="_blank">Raweditt</a> in
+                collaboration with <a href="https://thesemicolon.online" target="_blank">Semicolon</a></p>
         </div>
     </footer>
 
@@ -2412,7 +3021,7 @@
                         <option value="Shanti Vihar">Shanti Vihar </option>
                         <option value="Sankeshwar City">Sankeshwar City </option>
                         <option value="Orion Sky">Orion Sky</option>
-                        
+
                         <option value="Other">Other / General Inquiry</option>
                     </select>
                 </div>
@@ -2433,6 +3042,38 @@
     </div>
 
     <script>
+        // Preloader - Fade out after page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 800);
+                }
+            }, 2000);
+        });
+
+        // Create Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            if (!container) return;
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particle.style.width = (2 + Math.random() * 4) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -2442,6 +3083,7 @@
             }
         });
 
+        // Mobile menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileOverlay = document.getElementById('mobileOverlay');
@@ -2475,6 +3117,7 @@
             link.addEventListener('click', closeMobileMenu);
         });
 
+        // Form Modal
         const formModal = document.getElementById('formModal');
         const formClose = document.getElementById('formClose');
         const bookButtons = [
@@ -2505,6 +3148,7 @@
             }
         });
 
+        // Form submission to WhatsApp
         document.getElementById('bookingForm').addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -2532,6 +3176,7 @@
             e.target.reset();
         });
 
+        // Enhanced Intersection Observer for fade-in elements
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -2549,6 +3194,36 @@
             observer.observe(el);
         });
 
+        // Section Reveal Observer
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-reveal').forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Stagger Animation for items
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, entry.target.dataset.staggerDelay || 0);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.stagger-item').forEach((item, index) => {
+            item.dataset.staggerDelay = index * 100;
+            staggerObserver.observe(item);
+        });
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2559,111 +3234,108 @@
             });
         });
 
-    // Video Player Modal
-    const videoPlayerModal = document.getElementById('videoPlayerModal');
-    const videoPlayerClose = document.getElementById('videoPlayerClose');
-    const videoPlayer = document.getElementById('videoPlayer');
-    const allVideoItems = document.querySelectorAll('.vertical-video-item, .property-video-card');
+        // Video Player Modal
+        const videoPlayerModal = document.getElementById('videoPlayerModal');
+        const videoPlayerClose = document.getElementById('videoPlayerClose');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const allVideoItems = document.querySelectorAll('.vertical-video-item, .property-video-card');
 
-    allVideoItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const videoSrc = this.getAttribute('data-video');
-            videoPlayer.querySelector('source').src = videoSrc;
-            videoPlayer.load();
-            videoPlayerModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-                videoPlayer.play().catch(e => console.log('Autoplay prevented'));
-            }, 300);
+        allVideoItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const videoSrc = this.getAttribute('data-video');
+                videoPlayer.querySelector('source').src = videoSrc;
+                videoPlayer.load();
+                videoPlayerModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    videoPlayer.play().catch(e => console.log('Autoplay prevented'));
+                }, 300);
+            });
         });
-    });
 
-    function closeVideoPlayer() {
-        videoPlayerModal.classList.remove('active');
-        videoPlayer.pause();
-        videoPlayer.currentTime = 0;
-        document.body.style.overflow = '';
-    }
-
-    videoPlayerClose.addEventListener('click', closeVideoPlayer);
-    videoPlayerModal.querySelector('.video-player-backdrop').addEventListener('click', closeVideoPlayer);
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && videoPlayerModal.classList.contains('active')) {
-            closeVideoPlayer();
+        function closeVideoPlayer() {
+            videoPlayerModal.classList.remove('active');
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+            document.body.style.overflow = '';
         }
-    });
 
-    // Image Gallery Auto-scroll
-    const galleryContainer = document.getElementById('galleryContainer');
-    const pauseBtn = document.getElementById('pauseBtn');
-    const pauseIcon = pauseBtn.querySelector('.pause-icon');
-    const playIcon = pauseBtn.querySelector('.play-icon');
-    const progressFill = document.getElementById('progressFill');
-    const galleryWrapper = galleryContainer.parentElement;
+        if (videoPlayerClose) {
+            videoPlayerClose.addEventListener('click', closeVideoPlayer);
+        }
 
-    let isAutoScrolling = true;
-    let scrollSpeed = 1;
-    let isDragging = false;
-    let startX, scrollLeft;
+        const videoBackdrop = videoPlayerModal?.querySelector('.video-player-backdrop');
+        if (videoBackdrop) {
+            videoBackdrop.addEventListener('click', closeVideoPlayer);
+        }
 
-    function autoScroll() {
-        if (isAutoScrolling && !isDragging) {
-            galleryWrapper.scrollLeft += scrollSpeed;
-            if (galleryWrapper.scrollLeft >= galleryWrapper.scrollWidth - galleryWrapper.clientWidth) {
-                galleryWrapper.scrollLeft = 0;
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && videoPlayerModal?.classList.contains('active')) {
+                closeVideoPlayer();
             }
-            const scrollPercentage = (galleryWrapper.scrollLeft / (galleryWrapper.scrollWidth - galleryWrapper.clientWidth)) * 100;
-            progressFill.style.width = scrollPercentage + '%';
+        });
+
+        // Image Gallery Auto-scroll (with null checks)
+        const galleryContainer = document.getElementById('galleryContainer');
+        if (galleryContainer) {
+            const galleryWrapper = galleryContainer.parentElement;
+            let isAutoScrolling = true;
+            let scrollSpeed = 1;
+            let isDragging = false;
+            let startX, scrollLeft;
+
+            function autoScroll() {
+                if (isAutoScrolling && !isDragging && galleryWrapper) {
+                    galleryWrapper.scrollLeft += scrollSpeed;
+                    if (galleryWrapper.scrollLeft >= galleryWrapper.scrollWidth - galleryWrapper.clientWidth) {
+                        galleryWrapper.scrollLeft = 0;
+                    }
+                }
+                requestAnimationFrame(autoScroll);
+            }
+
+            autoScroll();
+
+            galleryWrapper.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - galleryWrapper.offsetLeft;
+                scrollLeft = galleryWrapper.scrollLeft;
+            });
+
+            galleryWrapper.addEventListener('mouseleave', () => isDragging = false);
+            galleryWrapper.addEventListener('mouseup', () => isDragging = false);
+
+            galleryWrapper.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - galleryWrapper.offsetLeft;
+                galleryWrapper.scrollLeft = scrollLeft - (x - startX) * 2;
+            });
+
+            let touchStartX = 0;
+            galleryWrapper.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                touchStartX = e.touches[0].pageX;
+                scrollLeft = galleryWrapper.scrollLeft;
+            });
+
+            galleryWrapper.addEventListener('touchend', () => isDragging = false);
+
+            galleryWrapper.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                galleryWrapper.scrollLeft = scrollLeft + (touchStartX - e.touches[0].pageX) * 2;
+            });
         }
-        requestAnimationFrame(autoScroll);
-    }
 
-    autoScroll();
-
-    pauseBtn.addEventListener('click', () => {
-        isAutoScrolling = !isAutoScrolling;
-        pauseIcon.style.display = isAutoScrolling ? 'block' : 'none';
-        playIcon.style.display = isAutoScrolling ? 'none' : 'block';
-    });
-
-    galleryWrapper.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.pageX - galleryWrapper.offsetLeft;
-        scrollLeft = galleryWrapper.scrollLeft;
-    });
-
-    galleryWrapper.addEventListener('mouseleave', () => isDragging = false);
-    galleryWrapper.addEventListener('mouseup', () => isDragging = false);
-
-    galleryWrapper.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX - galleryWrapper.offsetLeft;
-        galleryWrapper.scrollLeft = scrollLeft - (x - startX) * 2;
-    });
-
-    let touchStartX = 0;
-    galleryWrapper.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        touchStartX = e.touches[0].pageX;
-        scrollLeft = galleryWrapper.scrollLeft;
-    });
-
-    galleryWrapper.addEventListener('touchend', () => isDragging = false);
-
-    galleryWrapper.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        galleryWrapper.scrollLeft = scrollLeft + (touchStartX - e.touches[0].pageX) * 2;
-    });
-
-    galleryWrapper.addEventListener('scroll', () => {
-        const scrollPercentage = (galleryWrapper.scrollLeft / (galleryWrapper.scrollWidth - galleryWrapper.clientWidth)) * 100;
-        progressFill.style.width = scrollPercentage + '%';
-    });
+        // Animate hero text on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.style.opacity = '1';
+            }
+        });
 
     </script>
 </body>
+
 </html>
-
-
