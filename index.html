@@ -89,9 +89,97 @@
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
+        /* MOBILE PERFORMANCE: Disable heavy animations on phones */
+        @media (max-width: 767px),
+        (prefers-reduced-motion: reduce) {
             .gradient-line {
                 animation: none;
+            }
+
+            .floating-whatsapp {
+                animation: none;
+            }
+
+            .floating-whatsapp::before {
+                animation: none;
+                display: none;
+            }
+
+            .shimmer::after {
+                animation: none;
+                display: none;
+            }
+
+            .particle {
+                display: none;
+            }
+
+            .particles-container {
+                display: none;
+            }
+
+            /* Simplify transitions on mobile */
+            .section-reveal {
+                transition: opacity 0.4s ease;
+                transform: none;
+            }
+
+            .stagger-item {
+                transition: opacity 0.3s ease;
+                transform: none;
+            }
+
+            .testimonial-card:hover {
+                transform: none;
+            }
+
+            /* Reduce backdrop blur on mobile for performance */
+            .glass-card,
+            .mobile-menu,
+            header {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            /* Disable complex hover transforms on mobile */
+            .card-3d:hover {
+                transform: none;
+            }
+
+            /* Simplify button hover effects */
+            .book-btn:hover,
+            .mobile-book-btn:hover {
+                transform: none;
+            }
+
+            /* Disable glow effects on mobile */
+            .nav-links li a::after {
+                display: none;
+            }
+        }
+
+        /* DESKTOP/LAPTOP: Reduced animations for better performance */
+        @media (min-width: 768px) {
+
+            /* Disable heavy floating animation on desktop too */
+            .floating-whatsapp {
+                animation: none;
+            }
+
+            .floating-whatsapp::before {
+                display: none;
+            }
+
+            /* Keep gradient line but slow it down */
+            .gradient-line {
+                animation-duration: 20s;
+            }
+
+            /* Simplify card hover effects */
+            .testimonial-card:hover,
+            .why-us-item:hover,
+            .project-card:hover {
+                transform: translateY(-5px);
             }
         }
 
@@ -270,25 +358,9 @@
             overflow: hidden;
         }
 
+        /* Shimmer disabled globally for performance */
         .shimmer::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                left: -100%;
-            }
-
-            100% {
-                left: 100%;
-            }
+            display: none;
         }
 
         /* Glow Effects */
@@ -1857,9 +1929,16 @@
             padding: 1rem;
             border: 1px solid #ddd;
             font-size: 0.9rem;
-            font-family: 'Lato', sans-serif;
-            transition: all 0.3s;
-            background: var(--light-gray);
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s ease;
+            background: #ffffff;
+            color: #333333;
+            border-radius: 8px;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #999999;
         }
 
         .form-input:focus,
@@ -1867,7 +1946,16 @@
         .form-textarea:focus {
             outline: none;
             border-color: var(--primary-gold);
-            background: var(--white);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
         }
 
         .form-textarea {
@@ -3702,18 +3790,24 @@
         // GOD LEVEL SCROLL ANIMATIONS
         // ============================================
 
-        // Parallax Effect for sections
+        // Mobile detection for performance optimization
+        const isMobile = window.matchMedia('(max-width: 767px)').matches ||
+            'ontouchstart' in window ||
+            navigator.maxTouchPoints > 0;
+
+        // Parallax Effect for sections - DESKTOP ONLY
         const parallaxElements = document.querySelectorAll('.hero-section, .cta-section');
 
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
+        if (!isMobile) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
 
-            parallaxElements.forEach(el => {
-                const rate = scrolled * 0.3;
-                const bgPos = el.style.backgroundPosition;
-                el.style.backgroundPositionY = rate + 'px';
-            });
-        });
+                parallaxElements.forEach(el => {
+                    const rate = scrolled * 0.3;
+                    el.style.backgroundPositionY = rate + 'px';
+                });
+            }, { passive: true });
+        }
 
         // Advanced Scroll Reveal Animation System
         const scrollRevealElements = document.querySelectorAll('.fade-in, .project-card, .why-us-item, .testimonial-card, .stat-item');
@@ -3721,24 +3815,33 @@
         const scrollRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Add delay based on index for stagger effect
-                    const delay = entry.target.dataset.delay || (Array.from(scrollRevealElements).indexOf(entry.target) % 4) * 100;
+                    // Reduced delay on mobile for snappier feel
+                    const delay = isMobile ? 0 : (entry.target.dataset.delay || (Array.from(scrollRevealElements).indexOf(entry.target) % 4) * 100);
 
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                        entry.target.style.filter = 'blur(0)';
+                        entry.target.style.transform = 'translateY(0)';
+                        if (!isMobile) {
+                            entry.target.style.filter = 'blur(0)';
+                        }
                     }, delay);
                 }
             });
-        }, { threshold: 0.15, rootMargin: '-50px' });
+        }, { threshold: 0.1, rootMargin: '0px' });
 
         scrollRevealElements.forEach((el, index) => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(80px) scale(0.95)';
-            el.style.filter = 'blur(5px)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-            el.dataset.delay = (index % 4) * 100;
+            if (isMobile) {
+                // Simpler animation on mobile - no blur, no scale
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            } else {
+                // Full animation on desktop
+                el.style.transform = 'translateY(80px) scale(0.95)';
+                el.style.filter = 'blur(5px)';
+                el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                el.dataset.delay = (index % 4) * 100;
+            }
             scrollRevealObserver.observe(el);
         });
 
@@ -3798,39 +3901,41 @@
 
         statValues.forEach(stat => counterObserver.observe(stat));
 
-        // Scale on Scroll Effect for images
-        const scaleImages = document.querySelectorAll('.about-image img, .founder-image img, .project-image img');
+        // Scale on Scroll Effect for images - DESKTOP ONLY
+        if (!isMobile) {
+            const scaleImages = document.querySelectorAll('.about-image img, .founder-image img, .project-image img');
 
-        const scaleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const scrollPos = entry.intersectionRatio;
-                    entry.target.style.transform = `scale(${1 + (1 - scrollPos) * 0.1})`;
-                }
-            });
-        }, { threshold: Array.from({ length: 20 }, (_, i) => i / 20) });
+            const scaleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const scrollPos = entry.intersectionRatio;
+                        entry.target.style.transform = `scale(${1 + (1 - scrollPos) * 0.1})`;
+                    }
+                });
+            }, { threshold: Array.from({ length: 20 }, (_, i) => i / 20) });
 
-        scaleImages.forEach(img => {
-            img.style.transition = 'transform 0.3s ease-out';
-            scaleObserver.observe(img);
-        });
-
-        // Magnetic Hover Effect for buttons
-        const magneticButtons = document.querySelectorAll('.learn-more-btn, .read-more-btn, .contact-btn, .form-submit');
-
-        magneticButtons.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            scaleImages.forEach(img => {
+                img.style.transition = 'transform 0.3s ease-out';
+                scaleObserver.observe(img);
             });
 
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0, 0)';
+            // Magnetic Hover Effect for buttons - DESKTOP ONLY
+            const magneticButtons = document.querySelectorAll('.learn-more-btn, .read-more-btn, .contact-btn, .form-submit');
+
+            magneticButtons.forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translate(0, 0)';
+                });
             });
-        });
+        }
 
         // Smooth Section Highlight on Scroll
         const sections = document.querySelectorAll('section');
@@ -3854,52 +3959,9 @@
             sectionHighlightObserver.observe(section);
         });
 
-        // Gradient Text Animation on scroll
-        const gradientTexts = document.querySelectorAll('.gradient-text, .hero-title');
+        // NOTE: Gradient text animation on scroll and 3D tilt effects 
+        // have been disabled for better performance on all devices
 
-        window.addEventListener('scroll', () => {
-            const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-            const hue = 180 + scrollPercent * 60; // Shift from cyan to purple
-
-            gradientTexts.forEach(text => {
-                text.style.background = `linear-gradient(135deg, hsl(${hue}, 100%, 50%) 0%, hsl(${hue + 60}, 80%, 60%) 100%)`;
-                text.style.backgroundClip = 'text';
-                text.style.webkitBackgroundClip = 'text';
-                text.style.webkitTextFillColor = 'transparent';
-            });
-        });
-
-        // Card 3D Tilt Effect
-        const tiltCards = document.querySelectorAll('.project-card, .why-us-item, .testimonial-card');
-
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-
-        // Floating Elements Animation
-        const floatingElements = document.querySelectorAll('.floating-whatsapp, .why-us-icon');
-
-        floatingElements.forEach((el, i) => {
-            const duration = 3 + Math.random() * 2;
-            const delay = Math.random() * 2;
-            el.style.animation = `floatUpDown ${duration}s ease-in-out ${delay}s infinite`;
-        });
 
         // Add floating animation keyframes dynamically
         const styleSheet = document.createElement('style');
@@ -3921,15 +3983,7 @@
         `;
         document.head.appendChild(styleSheet);
 
-        // Glow pulse effect on hover for cards
-        tiltCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.animation = 'glowPulse 2s ease-in-out infinite';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.animation = 'none';
-            });
-        });
+        // NOTE: Card glow pulse effects removed for performance
 
     </script>
 </body>
