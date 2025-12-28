@@ -5,51 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivalay Infratech - Premium Real Estate Excellence in Indore</title>
-    <meta name="description" content="13+ years of trust. 500+ happy families. 100% RERA approved properties in Indore.">
+    <meta name="description"
+        content="13+ years of trust. 500+ happy families. 100% RERA approved properties in Indore.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
             --primary-gold: #c9a86c;
             --primary-gold-dark: #a37d4e;
             --primary-gold-light: #dfc89e;
-            --black: #000000;
-            --black-secondary: #0a0a0a;
-            --black-tertiary: #1a1a1a;
-            --dark-gray: #2a2a2a;
+            --dark: #0f0f0f;
+            --dark-secondary: #1a1a1a;
+            --light-gray: #f8f9fa;
             --mid-gray: #6c757d;
             --white: #ffffff;
+            --accent-blue: #4a7ba7;
             --gradient-gold: linear-gradient(135deg, #c9a86c 0%, #a37d4e 50%, #8b6914 100%);
-            --gradient-black: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             --shadow-gold: 0 10px 40px rgba(201, 168, 108, 0.3);
-            --shadow-dark: 0 10px 40px rgba(0, 0, 0, 0.8);
+            --shadow-dark: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* Preloader */
         .preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--black);
+            background: var(--dark);
             z-index: 99999;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
         .preloader.fade-out {
@@ -59,22 +58,23 @@
 
         .preloader-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-size: clamp(1.2rem, 5vw, 2rem);
             font-weight: 600;
             color: var(--primary-gold);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             margin-bottom: 2rem;
-            animation: pulseGlow 2s ease-in-out infinite;
+            animation: pulse 2s ease-in-out infinite;
             text-align: center;
-            padding: 0 1.5rem;
-            text-shadow: 0 0 20px rgba(201, 168, 108, 0.5);
+            padding: 0 1rem;
+            width: 100%;
+            max-width: 90%;
         }
 
         .preloader-bar {
-            width: 250px;
-            height: 4px;
+            width: 200px;
+            height: 3px;
             background: rgba(201, 168, 108, 0.2);
-            border-radius: 10px;
+            border-radius: 3px;
             overflow: hidden;
         }
 
@@ -83,34 +83,41 @@
             background: var(--gradient-gold);
             width: 0%;
             animation: loading 2s ease-in-out forwards;
-            box-shadow: 0 0 20px rgba(201, 168, 108, 0.8);
         }
 
         @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { 
-                opacity: 1; 
-                transform: scale(1);
-                text-shadow: 0 0 20px rgba(201, 168, 108, 0.5);
+            0% {
+                width: 0%;
             }
-            50% { 
-                opacity: 0.8; 
-                transform: scale(1.03);
-                text-shadow: 0 0 30px rgba(201, 168, 108, 0.8);
+
+            50% {
+                width: 70%;
+            }
+
+            100% {
+                width: 100%;
             }
         }
 
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Floating WhatsApp Button */
         .floating-whatsapp {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 65px;
-            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             border-radius: 50%;
             display: flex;
@@ -118,10 +125,20 @@
             justify-content: center;
             z-index: 9999;
             cursor: pointer;
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: floatBounce 3s ease-in-out infinite;
-            text-decoration: none;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .floating-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
         }
 
         .floating-whatsapp::before {
@@ -131,24 +148,20 @@
             height: 100%;
             border-radius: 50%;
             background: inherit;
-            animation: ripple 2s infinite;
             z-index: -1;
-        }
-
-        .floating-whatsapp:hover {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.8);
-        }
-
-        .floating-whatsapp svg {
-            width: 35px;
-            height: 35px;
-            fill: white;
+            animation: ripple 2s ease-out infinite;
         }
 
         @keyframes floatBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         @keyframes ripple {
@@ -156,106 +169,394 @@
                 transform: scale(1);
                 opacity: 0.5;
             }
+
             100% {
-                transform: scale(1.5);
+                transform: scale(1.8);
                 opacity: 0;
             }
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--white);
-            background: var(--black);
-            overflow-x: hidden;
+        /* Animated Text Effect */
+        .animated-text {
+            overflow: hidden;
+        }
+
+        .animated-text span {
+            display: inline-block;
+            animation: slideUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(100%);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glassmorphism Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
             position: relative;
+            overflow: hidden;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            letter-spacing: 1px;
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
         }
 
-        .scroll-reveal {
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Glow Effects */
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(201, 168, 108, 0.3),
+                0 0 40px rgba(201, 168, 108, 0.2),
+                0 0 60px rgba(201, 168, 108, 0.1);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Particle Background */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(201, 168, 108, 0.6);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Section Transitions */
+        .section-reveal {
             opacity: 0;
             transform: translateY(60px);
             transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .scroll-reveal.active {
+        .section-reveal.revealed {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .scroll-reveal-left {
+        /* Stagger Animation */
+        .stagger-item {
             opacity: 0;
-            transform: translateX(-60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .scroll-reveal-left.active {
+        .stagger-item.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
-        .scroll-reveal-right {
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 1.5rem;
+            background: linear-gradient(180deg, var(--light-gray) 0%, #fff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-title {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 2px;
+            position: relative;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 6rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(201, 168, 108, 0.15);
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.75rem;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.2rem;
+            margin-top: 1rem;
+        }
+
+        .testimonial-rating svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary-gold);
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        /* Enhanced Scroll Animation */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 2s forwards;
             opacity: 0;
-            transform: translateX(60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .scroll-reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
+        .scroll-indicator .mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            position: relative;
         }
 
-        .scroll-scale {
-            opacity: 0;
-            transform: scale(0.85);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        .scroll-indicator .wheel {
+            width: 4px;
+            height: 8px;
+            background: var(--primary-gold);
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s ease-in-out infinite;
         }
 
-        .scroll-scale.active {
-            opacity: 1;
-            transform: scale(1);
+        @keyframes scrollWheel {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
-        .scroll-fade {
-            opacity: 0;
-            transition: all 1.2s ease;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+            }
         }
 
-        .scroll-fade.active {
-            opacity: 1;
+        /* 3D Card Hover Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
-        .stagger-5 { transition-delay: 0.5s; }
-        .stagger-6 { transition-delay: 0.6s; }
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+
+        /* Cursor Trail Effect */
+        .cursor-glow {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(201, 168, 108, 0.4) 0%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        /* Counter Animation */
+        .counter-animated {
+            display: inline-block;
+        }
+
+        body {
+            font-weight: 500;
+            font-family: 'Lato', sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
 
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.98);
             z-index: 1000;
-            border-bottom: 1px solid rgba(201, 168, 108, 0.2);
+            border-bottom: 1px solid #e0e0e0;
             transition: all 0.3s ease;
         }
 
         header.scrolled {
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.9);
-            background: rgba(0, 0, 0, 1);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
         nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.2rem 1.5rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -269,21 +570,18 @@
 
         .logo-main {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 3px;
-            color: var(--primary-gold);
-            text-shadow: 0 0 10px rgba(201, 168, 108, 0.3);
+            letter-spacing: 2px;
+            color: var(--dark);
         }
 
         .logo-sub {
-            font-family: 'Poppins', sans-serif;
             font-size: 0.55rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--mid-gray);
             margin-top: 0.2rem;
-            font-weight: 500;
         }
 
         .nav-links {
@@ -293,7 +591,7 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             z-index: 1001;
         }
 
@@ -307,25 +605,18 @@
             gap: 5px;
             cursor: pointer;
             z-index: 1001;
-            padding: 8px;
-            transition: all 0.3s;
-        }
-
-        .hamburger:hover {
-            transform: scale(1.1);
+            padding: 5px;
         }
 
         .hamburger span {
-            width: 28px;
-            height: 2.5px;
-            background: var(--primary-gold);
+            width: 25px;
+            height: 2px;
+            background: var(--dark);
             transition: all 0.3s;
-            border-radius: 3px;
-            box-shadow: 0 0 10px rgba(201, 168, 108, 0.5);
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+            transform: rotate(45deg) translate(7px, 7px);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -333,7 +624,7 @@
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .mobile-menu-overlay {
@@ -342,12 +633,11 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.97);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 998;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
         }
 
         .mobile-menu-overlay.active {
@@ -359,15 +649,15 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: 90%;
-            max-width: 400px;
+            width: 85%;
+            max-width: 350px;
             height: 100vh;
-            background: var(--black-secondary);
+            background: var(--white);
             z-index: 999;
-            transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
-            padding: 5.5rem 2rem 2rem;
-            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.9);
+            padding: 5rem 2rem 2rem;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
         }
 
         .mobile-menu.active {
@@ -376,34 +666,19 @@
 
         .mobile-nav-links {
             list-style: none;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .mobile-nav-links li {
-            border-bottom: 1px solid rgba(201, 168, 108, 0.2);
-            transform: translateX(50px);
-            opacity: 0;
-            transition: all 0.4s ease;
+            border-bottom: 1px solid #e0e0e0;
         }
-
-        .mobile-menu.active .mobile-nav-links li {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .mobile-menu.active .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-menu.active .mobile-nav-links li:nth-child(2) { transition-delay: 0.2s; }
-        .mobile-menu.active .mobile-nav-links li:nth-child(3) { transition-delay: 0.3s; }
-        .mobile-menu.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.4s; }
 
         .mobile-nav-links a {
             display: block;
-            padding: 1.8rem 0;
+            padding: 1.2rem 0;
             text-decoration: none;
-            color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.85rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s;
@@ -416,343 +691,160 @@
 
         .mobile-book-btn {
             width: 100%;
-            padding: 1.5rem;
-            background: var(--gradient-gold);
+            padding: 1.2rem;
+            background: var(--primary-gold);
             border: none;
             color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            margin-bottom: 1.8rem;
-            transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(201, 168, 108, 0.4);
+            margin-bottom: 1rem;
+            transition: all 0.3s;
         }
 
         .mobile-book-btn:hover {
-            background: var(--primary-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(201, 168, 108, 0.6);
+            background: var(--dark);
         }
 
         .mobile-contact-links {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 0.8rem;
         }
 
         .mobile-contact-link {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            padding: 1.5rem;
-            background: var(--black-tertiary);
+            gap: 0.8rem;
+            padding: 1rem;
+            background: var(--light-gray);
             text-decoration: none;
-            color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.75rem;
             letter-spacing: 2px;
-            transition: all 0.4s;
-            border: 2px solid rgba(201, 168, 108, 0.2);
+            transition: all 0.3s;
         }
 
         .mobile-contact-link:hover {
             background: var(--primary-gold);
-            color: var(--black);
-            border-color: var(--primary-gold);
-            transform: translateX(5px);
+            color: var(--white);
         }
 
         .mobile-contact-link svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
         }
 
-        /* Hero Section with Animated Background */
         .hero-section {
-            margin-top: 68px;
-            min-height: calc(100vh - 68px);
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            min-height: 500px;
             position: relative;
             overflow: hidden;
-            background: var(--black);
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 0;
         }
 
-        /* Animated Background Elements */
-        .hero-bg-animation {
+        .hero-video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            transform: none !important;
+            z-index: 0;
+        }
+
+        .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .bg-gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            animation: float-orb 20s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
-            top: -100px;
-            left: -100px;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--primary-gold-dark) 0%, transparent 70%);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: 2s;
-        }
-
-        .orb-3 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, var(--primary-gold-light) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: 4s;
-        }
-
-        @keyframes float-orb {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(30px, -30px) scale(1.1);
-            }
-            66% {
-                transform: translate(-30px, 30px) scale(0.9);
-            }
-        }
-
-        .bg-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--primary-gold);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: particle-float 15s linear infinite;
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
-
-        @keyframes particle-float {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100px) scale(1);
-                opacity: 0;
-            }
-        }
-
-        .bg-lines {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-        }
-
-        .line {
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent 0%, var(--primary-gold) 50%, transparent 100%);
-            animation: line-flow 8s linear infinite;
-        }
-
-        .line:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .line:nth-child(2) { left: 30%; animation-delay: 1s; }
-        .line:nth-child(3) { left: 50%; animation-delay: 2s; }
-        .line:nth-child(4) { left: 70%; animation-delay: 1.5s; }
-        .line:nth-child(5) { left: 90%; animation-delay: 0.5s; }
-
-        @keyframes line-flow {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100%);
-                opacity: 0;
-            }
+            background: rgba(17, 2, 2, 0.541);
+            z-index: 1;
+            display: none;
         }
 
         .hero-content {
-            position: relative;
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
             color: var(--white);
             z-index: 10;
             width: 90%;
-            max-width: 900px;
-            padding: 0 1.5rem;
+            max-width: 600px;
+            padding: 0 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .featured-tag {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 5px;
+            font-size: 0.5rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 2rem;
-            color: var(--primary-gold);
-            animation: slideDown 1s ease 0.3s backwards;
-            text-shadow: 0 0 20px rgba(201, 168, 108, 0.8);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 0.8rem;
+            opacity: 0.95;
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-size: clamp(1.8rem, 7vw, 3rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-            animation: slideUp 1s ease 0.5s backwards;
-            text-shadow: 0 5px 30px rgba(201, 168, 108, 0.3);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .hero-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1.05rem, 3vw, 1.3rem);
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
+            font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
             opacity: 0.95;
-            line-height: 1.7;
-            animation: slideUp 1s ease 0.7s backwards;
+            line-height: 1.5;
         }
 
         .hero-details {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(0.85rem, 2vw, 1.05rem);
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-bottom: 3rem;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.8rem;
             opacity: 0.9;
-            color: var(--primary-gold);
-            animation: slideUp 1s ease 0.9s backwards;
-            text-shadow: 0 0 15px rgba(201, 168, 108, 0.6);
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            animation: slideUp 1s ease 1.1s backwards;
         }
 
         .learn-more-btn {
-            padding: 1.3rem 3rem;
-            background: var(--gradient-gold);
-            border: none;
+            padding: 0.9rem 2rem;
+            background: transparent;
+            border: 1px solid var(--white);
             color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s ease;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 10px 40px rgba(201, 168, 108, 0.4);
         }
 
         .learn-more-btn:hover {
             background: var(--primary-gold);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 50px rgba(201, 168, 108, 0.6);
-        }
-
-        .learn-more-btn-secondary {
-            padding: 1.3rem 3rem;
-            background: transparent;
-            border: 2px solid var(--white);
+            border-color: var(--primary-gold);
             color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .learn-more-btn-secondary:hover {
-            background: var(--white);
-            color: var(--black);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 149, 106, 0.4);
         }
 
         .about-section {
-            padding: 5rem 1.5rem;
-            background: var(--black-secondary);
-            position: relative;
+            padding: 4rem 1.5rem;
+            background: var(--white);
         }
 
         .about-container {
@@ -760,87 +852,77 @@
             margin: 0 auto;
         }
 
+        .about-text {
+            margin-bottom: 2rem;
+        }
+
         .section-label {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 4px;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--primary-gold);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 15px rgba(201, 168, 108, 0.5);
+            color: var(--mid-gray);
+            margin-bottom: 1rem;
         }
 
         .about-title {
-            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
-            color: var(--white);
         }
 
         .about-text p {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            font-weight: 400;
-            line-height: 1.9;
+            font-size: 0.95rem;
+            line-height: 1.8;
             color: var(--mid-gray);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.2rem;
         }
 
         .read-more-btn {
-            padding: 1.2rem 2.8rem;
+            padding: 0.9rem 2rem;
             background: transparent;
-            border: 2px solid var(--primary-gold);
-            color: var(--primary-gold);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s;
             text-decoration: none;
             display: inline-block;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .read-more-btn:hover {
             background: var(--primary-gold);
-            color: var(--black);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(201, 168, 108, 0.5);
+            border-color: var(--primary-gold);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         .about-image {
             position: relative;
             overflow: hidden;
-            margin-top: 3rem;
-            border: 3px solid rgba(201, 168, 108, 0.3);
+            margin-top: 2rem;
         }
 
         .about-image img {
             width: 100%;
-            height: 400px;
+            height: 300px;
             object-fit: cover;
-            transition: transform 1s ease;
-            filter: brightness(0.8) grayscale(0.3);
+            transition: transform 0.6s ease;
         }
 
         .about-image:hover img {
-            transform: scale(1.1);
-            filter: brightness(1) grayscale(0);
+            transform: scale(1.05);
         }
 
         .stats-section {
-            padding: 5rem 1.5rem;
-            background: var(--black);
+            padding: 4rem 1.5rem;
+            background: var(--dark);
             color: var(--white);
-            border-top: 2px solid rgba(201, 168, 108, 0.3);
-            border-bottom: 2px solid rgba(201, 168, 108, 0.3);
-            position: relative;
         }
 
         .stats-container {
@@ -850,81 +932,49 @@
         }
 
         .stats-title {
-            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.8rem;
         }
 
         .stats-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            font-weight: 400;
-            opacity: 0.8;
-            margin-bottom: 4rem;
-            letter-spacing: 0.5px;
-            color: var(--mid-gray);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+            line-height: 1.6;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 3rem 2rem;
-            background: var(--black-secondary);
-            border: 2px solid rgba(201, 168, 108, 0.2);
-            transition: all 0.5s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 168, 108, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .stat-item:hover::before {
-            left: 100%;
-        }
-
-        .stat-item:hover {
-            border-color: var(--primary-gold);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(201, 168, 108, 0.4);
         }
 
         .stat-value {
-            font-size: clamp(3.5rem, 12vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--primary-gold);
-            text-shadow: 0 0 30px rgba(201, 168, 108, 0.5);
         }
 
         .stat-label {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(0.75rem, 2vw, 0.9rem);
-            font-weight: 600;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--mid-gray);
+            opacity: 0.8;
         }
 
         .projects-section {
-            padding: 5rem 1.5rem;
-            background: var(--black-secondary);
+            padding: 4rem 1.5rem;
+            background: var(--light-gray);
         }
 
         .projects-container {
@@ -934,58 +984,41 @@
 
         .projects-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .projects-title {
-            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
         }
 
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .project-card {
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            background: var(--black);
-            border: 2px solid rgba(201, 168, 108, 0.2);
-            transition: all 0.6s ease;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(201, 168, 108, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: 1;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            transition: all 0.4s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(201, 168, 108, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             border-color: var(--primary-gold);
         }
 
         .project-image {
             width: 100%;
-            height: 320px;
+            height: 250px;
             overflow: hidden;
         }
 
@@ -993,69 +1026,60 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1s ease;
-            filter: brightness(0.7) grayscale(0.2);
+            transition: transform 0.6s ease;
         }
 
         .project-card:hover .project-image img {
-            transform: scale(1.15) rotate(2deg);
-            filter: brightness(1) grayscale(0);
+            transform: scale(1.1);
         }
 
         .project-info {
-            padding: 2.5rem 2rem;
-            position: relative;
-            z-index: 2;
+            padding: 1.5rem;
         }
 
         .project-category {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--primary-gold);
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.6rem;
         }
 
         .project-title {
-            font-size: clamp(1.8rem, 4vw, 2.3rem);
+            font-size: 1.3rem;
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.2rem;
-            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
         }
 
         .project-description {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(0.95rem, 2vw, 1.05rem);
-            line-height: 1.8;
+            font-size: 0.85rem;
+            line-height: 1.6;
             color: var(--mid-gray);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.2rem;
         }
 
         .project-link {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--primary-gold);
+            color: var(--dark);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             transition: all 0.3s;
         }
 
         .project-link:hover {
-            gap: 1.5rem;
+            color: var(--primary-gold);
+            gap: 1rem;
         }
 
         .founder-section {
-            padding: 5rem 1.5rem;
-            background: var(--black);
+            padding: 4rem 1.5rem;
+            background: var(--white);
         }
 
         .founder-container {
@@ -1066,82 +1090,76 @@
         .founder-image {
             position: relative;
             overflow: hidden;
-            margin-bottom: 3rem;
-            border: 3px solid rgba(201, 168, 108, 0.3);
+            margin-bottom: 2rem;
         }
 
         .founder-image img {
             width: 100%;
-            height: 450px;
+            height: 350px;
             object-fit: cover;
-            transition: transform 1s ease;
-            filter: brightness(0.8) grayscale(0.3);
+            transition: transform 0.6s ease;
         }
 
         .founder-image:hover img {
-            transform: scale(1.1);
-            filter: brightness(1) grayscale(0);
+            transform: scale(1.05);
         }
 
         .founder-text h2 {
-            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-size: clamp(2rem, 7vw, 4rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            margin-bottom: 1.2rem;
-            letter-spacing: 1px;
-            color: var(--primary-gold);
-            text-shadow: 0 0 20px rgba(201, 168, 108, 0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
         }
 
         .founder-role {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--mid-gray);
-            margin-bottom: 3rem;
-        }
-
-        .founder-bio {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.9;
             color: var(--mid-gray);
             margin-bottom: 2rem;
         }
 
+        .founder-bio {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+        }
+
         .founder-credentials {
-            margin-top: 3rem;
-            padding: 3rem 2rem;
-            background: var(--black-secondary);
-            border-left: 4px solid var(--primary-gold);
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--light-gray);
+            border-left: 3px solid var(--primary-gold);
         }
 
         .credential-item {
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .credential-item:last-child {
+            margin-bottom: 0;
         }
 
         .credential-label {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--primary-gold);
-            margin-bottom: 1.2rem;
+            color: var(--mid-gray);
+            margin-bottom: 0.6rem;
         }
 
         .credential-value {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(0.95rem, 2vw, 1.05rem);
-            line-height: 1.8;
-            color: var(--mid-gray);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            line-height: 1.7;
+            color: var(--dark);
         }
 
         .why-us-section {
-            padding: 5rem 1.5rem;
-            background: var(--black-secondary);
+            padding: 4rem 1.5rem;
+            background: var(--light-gray);
         }
 
         .why-us-container {
@@ -1151,97 +1169,83 @@
 
         .why-us-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .why-us-title {
-            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .why-us-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2.5rem;
+            gap: 1.5rem;
         }
 
         .why-us-item {
-            background: var(--black);
-            border: 2px solid rgba(201, 168, 108, 0.2);
-            padding: 3rem 2rem;
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            padding: 2rem 1.5rem;
             text-align: center;
-            transition: all 0.6s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .why-us-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(201, 168, 108, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .why-us-item:hover::before {
-            opacity: 1;
+            transition: all 0.4s ease;
         }
 
         .why-us-item:hover {
             border-color: var(--primary-gold);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(201, 168, 108, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .why-us-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 2.5rem;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            z-index: 1;
         }
 
         .why-us-icon svg {
             width: 100%;
             height: 100%;
-            stroke: var(--primary-gold);
-            filter: drop-shadow(0 0 10px rgba(201, 168, 108, 0.5));
+            fill: var(--primary-gold);
         }
 
         .why-us-item h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.4rem, 3vw, 1.7rem);
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.2rem;
-            color: var(--white);
-            position: relative;
-            z-index: 1;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            font-family: 'Lato', sans-serif;
         }
 
         .why-us-item p {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(0.95rem, 2vw, 1.05rem);
-            line-height: 1.8;
+            font-size: 0.85rem;
+            line-height: 1.7;
             color: var(--mid-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .cta-section {
-            padding: 5rem 1.5rem;
-            background: var(--black);
+            padding: 4rem 1.5rem;
+            background-image: url('office.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
             position: relative;
-            border-top: 2px solid rgba(201, 168, 108, 0.3);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
         }
 
         .cta-content {
@@ -1254,50 +1258,48 @@
         }
 
         .cta-title {
-            font-size: clamp(2.5rem, 10vw, 6rem);
+            font-size: clamp(2rem, 8vw, 4.5rem);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 2.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
         .cta-text {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            line-height: 1.8;
-            margin-bottom: 3.5rem;
-            color: var(--mid-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            opacity: 0.95;
         }
 
         .contact-btn {
-            padding: 1.4rem 3.5rem;
-            background: var(--gradient-gold);
-            border: none;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--white);
             color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 15px 50px rgba(201, 168, 108, 0.5);
         }
 
         .contact-btn:hover {
             background: var(--primary-gold);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(201, 168, 108, 0.7);
+            border-color: var(--primary-gold);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 149, 106, 0.4);
         }
 
         footer {
-            background: var(--black-secondary);
+            background: #0a0a0a;
             color: var(--white);
-            padding: 5rem 1.5rem 3rem;
-            border-top: 2px solid rgba(201, 168, 108, 0.3);
+            padding: 3rem 1.5rem 2rem;
         }
 
         .footer-container {
@@ -1305,25 +1307,24 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3.5rem;
-            margin-bottom: 3.5rem;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
             color: var(--primary-gold);
         }
 
         .footer-section p {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(0.95rem, 2vw, 1rem);
-            line-height: 1.8;
-            color: var(--mid-gray);
-            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            margin-bottom: 0.8rem;
         }
 
         .footer-links {
@@ -1331,69 +1332,107 @@
         }
 
         .footer-links li {
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-links a {
-            font-family: 'Inter', sans-serif;
-            color: var(--mid-gray);
+            color: var(--white);
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            opacity: 0.8;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: all 0.3s;
         }
 
         .footer-links a:hover {
+            opacity: 1;
             color: var(--primary-gold);
             padding-left: 0.5rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-info-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-info-item p {
+            margin: 0;
         }
 
         .social-links {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
-            margin-top: 2.5rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-link {
             width: 100%;
-            height: 60px;
-            border: 2px solid rgba(201, 168, 108, 0.3);
+            height: 50px;
+            border: 1px solid rgba(184, 149, 106, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s;
+            transition: all 0.3s;
             text-decoration: none;
-            background: var(--black);
+            color: var(--white);
+            background: rgba(184, 149, 106, 0.05);
         }
 
         .social-link:hover {
             background: var(--primary-gold);
             border-color: var(--primary-gold);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(201, 168, 108, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(184, 149, 106, 0.3);
         }
 
         .social-link svg {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             fill: var(--primary-gold);
             transition: fill 0.3s;
         }
 
         .social-link:hover svg {
-            fill: var(--black);
+            fill: var(--white);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(201, 168, 108, 0.2);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--mid-gray);
+            padding-top: 2rem;
+            border-top: 1px solid rgba(184, 149, 106, 0.2);
+            font-size: 0.75rem;
+            opacity: 0.7;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        .footer-credit {
+            margin-top: 0.8rem;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+
+        .footer-credit a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-credit a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
 
         .form-modal {
@@ -1402,20 +1441,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
             z-index: 10000;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
             overflow-y: auto;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .form-modal.active {
@@ -1423,23 +1456,23 @@
         }
 
         .form-container {
-            background: var(--black-secondary);
-            max-width: 550px;
+            background: var(--white);
+            max-width: 600px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            padding: 3rem 2rem;
+            padding: 2.5rem 1.5rem;
             margin: auto;
-            animation: slideInUp 0.5s ease;
-            border: 2px solid rgba(201, 168, 108, 0.3);
+            animation: modalSlideIn 0.4s ease;
         }
 
-        @keyframes slideInUp {
+        @keyframes modalSlideIn {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1448,159 +1481,133 @@
 
         .form-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 45px;
-            height: 45px;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
             background: transparent;
-            border: 2px solid var(--primary-gold);
-            color: var(--primary-gold);
-            font-size: 1.8rem;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-            font-weight: 300;
         }
 
         .form-close:hover {
             background: var(--primary-gold);
-            color: var(--black);
+            border-color: var(--primary-gold);
+            color: var(--white);
             transform: rotate(90deg);
         }
 
         .form-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .form-title {
+            font-size: clamp(1.8rem, 6vw, 3rem);
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 6vw, 2.8rem);
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 1rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
         }
 
         .form-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.8rem;
             color: var(--mid-gray);
-        }
-
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
+            letter-spacing: 2px;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
+        .form-label {
+            display: block;
+            font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--primary-gold);
+            margin-bottom: 0.6rem;
+            color: var(--dark);
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 1.2rem;
-            background: var(--black);
-            border: 2px solid rgba(201, 168, 108, 0.2);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            font-size: 0.9rem;
+            font-family: 'Lato', sans-serif;
             transition: all 0.3s;
+            background: var(--light-gray);
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
             outline: none;
             border-color: var(--primary-gold);
-            box-shadow: 0 0 20px rgba(201, 168, 108, 0.3);
+            background: var(--white);
         }
 
-        .form-group textarea {
+        .form-textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 100px;
         }
 
         .form-submit {
-            padding: 1.4rem;
-            background: var(--gradient-gold);
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-gold);
             border: none;
             color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s;
+            font-weight: 600;
             margin-top: 1rem;
-            box-shadow: 0 10px 30px rgba(201, 168, 108, 0.4);
         }
 
         .form-submit:hover {
-            background: var(--primary-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(201, 168, 108, 0.6);
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         @media (min-width: 768px) {
-            .hero-buttons {
-                flex-direction: row;
-                justify-content: center;
+            nav {
+                padding: 1.2rem 2rem;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .why-us-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: 2fr 1fr 1fr 1fr;
-                gap: 5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
             .logo-main {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
 
-            .hamburger {
-                display: none;
+            .logo-sub {
+                font-size: 0.6rem;
             }
 
             .nav-links {
                 display: flex;
-                gap: 3rem;
+                gap: 2.5rem;
                 list-style: none;
             }
 
             .nav-links a {
                 text-decoration: none;
-                color: var(--white);
-                font-family: 'Poppins', sans-serif;
+                color: var(--dark);
                 font-size: 0.75rem;
-                font-weight: 700;
                 letter-spacing: 2px;
                 text-transform: uppercase;
-                transition: all 0.3s;
+                font-weight: 600;
+                transition: color 0.3s;
                 position: relative;
             }
 
@@ -1610,9 +1617,9 @@
                 bottom: -5px;
                 left: 0;
                 width: 0;
-                height: 2px;
+                height: 1px;
                 background: var(--primary-gold);
-                transition: width 0.3s;
+                transition: width 0.3s ease;
             }
 
             .nav-links a:hover {
@@ -1625,23 +1632,27 @@
 
             .book-btn {
                 display: block;
-                padding: 0.9rem 2rem;
+                padding: 0.7rem 1.5rem;
                 background: transparent;
-                border: 2px solid var(--primary-gold);
+                border: 1px solid var(--primary-gold);
                 color: var(--primary-gold);
-                font-family: 'Poppins', sans-serif;
                 font-size: 0.7rem;
-                font-weight: 700;
                 letter-spacing: 2px;
                 text-transform: uppercase;
                 cursor: pointer;
                 transition: all 0.4s ease;
+                white-space: nowrap;
             }
 
             .book-btn:hover {
                 background: var(--primary-gold);
-                color: var(--black);
+                color: var(--white);
                 transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(184, 149, 106, 0.3);
+            }
+
+            .hamburger {
+                display: none;
             }
 
             .about-container {
@@ -1656,11 +1667,20 @@
             }
 
             .about-image img {
-                height: 550px;
+                height: 500px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
             }
 
             .projects-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            .project-image {
+                height: 350px;
             }
 
             .founder-container {
@@ -1675,18 +1695,638 @@
             }
 
             .founder-image img {
-                height: 650px;
+                height: 600px;
             }
 
             .why-us-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 4rem;
+            }
+
+            .social-links {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 0.8rem;
+            }
+
+            .cta-section {
+                background-attachment: fixed;
+            }
+
+            .about-section,
+            .stats-section,
+            .projects-section,
+            .founder-section,
+            .why-us-section,
+            .cta-section {
+                padding: 6rem 2rem;
+            }
+
+            .form-container {
+                padding: 3rem 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Inside Shivalay Infra Section */
+        .inside-infra-section {
+            padding: 4rem 1.5rem;
+            background: var(--light-gray);
+        }
+
+        .inside-infra-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .inside-infra-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .inside-infra-title {
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .inside-infra-subtitle {
+            font-size: 1rem;
+            color: var(--mid-gray);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .inside-infra-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .vertical-video-item {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .vertical-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            background: var(--dark);
+            border: 2px solid #e0e0e0;
+            transition: all 0.4s ease;
+        }
+
+        .vertical-video-item:hover .vertical-video-wrapper {
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 40px rgba(184, 149, 106, 0.3);
+            transform: translateY(-8px);
+        }
+
+        .vertical-video-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .vertical-video-item:hover .vertical-video-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .vertical-video-item:hover .video-play-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            color: var(--white);
+            background: rgba(184, 149, 106, 0.95);
+            border-radius: 50%;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .vertical-video-item:hover .play-btn {
+            background: var(--primary-gold);
+            transform: scale(1.15);
+        }
+
+        .video-gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+            padding: 3rem 1.5rem 1.5rem;
+            z-index: 1;
+        }
+
+        .video-meta h4 {
+            font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .video-meta p {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        /* Properties Showcase Section */
+        .properties-showcase-section {
+            padding: 4rem 1.5rem;
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .properties-showcase-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .properties-showcase-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .properties-showcase-title {
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .properties-showcase-subtitle {
+            font-size: 1rem;
+            opacity: 0.85;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .properties-showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .property-video-card {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .property-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            background: var(--dark);
+            border: 2px solid rgba(184, 149, 106, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .property-video-card:hover .property-video-wrapper {
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 50px rgba(184, 149, 106, 0.4);
+            transform: translateY(-10px);
+        }
+
+        .property-video-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .property-video-card:hover .property-video-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .property-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .property-video-card:hover .property-play-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .play-btn-large {
+            width: 90px;
+            height: 90px;
+            color: var(--white);
+            background: rgba(184, 149, 106, 0.95);
+            border-radius: 50%;
+            padding: 22px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        .property-video-card:hover .play-btn-large {
+            background: var(--primary-gold);
+            transform: scale(1.2);
+        }
+
+        .property-gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 60%, transparent 100%);
+            padding: 4rem 1.5rem 1.5rem;
+            z-index: 1;
+        }
+
+        .property-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--primary-gold);
+            color: var(--white);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .property-details h3 {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .property-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .property-location svg {
+            flex-shrink: 0;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+        }
+
+        /* Image Gallery Section */
+        .image-gallery-section {
+            padding: 4rem 0;
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .image-gallery-container {
+            max-width: 100%;
+        }
+
+        .image-gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .image-gallery-title {
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .image-gallery-subtitle {
+            font-size: 1rem;
+            color: var(--mid-gray);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-control-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(184, 149, 106, 0.3);
+        }
+
+        .gallery-control-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .gallery-control-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .gallery-scroll-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            cursor: grab;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-scroll-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .gallery-scroll-container {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 1.5rem 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            flex-shrink: 0;
+            width: 350px;
+            height: 250px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 2rem 1.5rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.1rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .gallery-progress-bar {
+            width: 100%;
+            height: 3px;
+            background: #e0e0e0;
+            margin-top: 1rem;
+        }
+
+        .gallery-progress-fill {
+            height: 100%;
+            background: var(--primary-gold);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Video Player Modal */
+        .video-player-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .video-player-modal.active {
+            display: flex;
+        }
+
+        .video-player-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-player-content {
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+            z-index: 1;
+            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .video-player-close {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--white);
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-player-close:hover {
+            background: var(--primary-gold);
+            border-color: var(--primary-gold);
+            transform: rotate(90deg);
+        }
+
+        #videoPlayer {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            background: #000;
+            aspect-ratio: 9/16;
+        }
+
+        @media (min-width: 768px) {
+            .inside-infra-section {
+                padding: 6rem 2rem;
+            }
+
+            .inside-infra-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .properties-showcase-section {
+                padding: 6rem 2rem;
+            }
+
+            .properties-showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 3rem;
+            }
+
+            .image-gallery-section {
+                padding: 6rem 0;
+            }
+
+            .gallery-scroll-container {
+                gap: 2rem;
+                padding: 0 2rem 2rem;
+            }
+
+            .gallery-item {
+                width: 400px;
+                height: 280px;
+            }
+
+            .video-player-content {
+                max-width: 600px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .properties-showcase-grid {
+                gap: 4rem;
+            }
+
+            .gallery-item {
+                width: 450px;
+                height: 320px;
+            }
+
+
+            .video-player-content {
+                max-width: 700px;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-logo">SHIVALAY INFRATECH</div>
         <div class="preloader-bar">
@@ -1694,13 +2334,15 @@
         </div>
     </div>
 
-    <a href="https://wa.me/919589524809" class="floating-whatsapp" target="_blank" rel="noopener">
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919589524809" class="floating-whatsapp" title="Chat on WhatsApp" target="_blank">
         <svg viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
     </a>
 
-    <header id="header">
+    <header>
         <nav>
             <div class="logo">
                 <div class="logo-main">SHIVALAY INFRATECH</div>
@@ -1713,7 +2355,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-right">
-                <button class="book-btn" id="bookBtnDesktop">Book Site Visit</button>
+                <button class="book-btn" id="bookAppointment">Book Site Visit</button>
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -1731,18 +2373,20 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="mobile-book-btn" id="bookBtnMobile">Book Site Visit</button>
+        <button class="mobile-book-btn" id="mobileBook">Book Site Visit</button>
         <div class="mobile-contact-links">
             <a href="tel:+919589524809" class="mobile-contact-link">
                 <svg viewBox="0 0 24 24">
-                    <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
-                    <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/>
+                    <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
+                    <path
+                        d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
                 </svg>
                 CALL NOW
             </a>
-            <a href="https://wa.me/919589524809" class="mobile-contact-link" target="_blank" rel="noopener">
+            <a href="https://wa.me/919589524809" class="mobile-contact-link">
                 <svg viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
                 WHATSAPP
             </a>
@@ -1750,55 +2394,38 @@
     </div>
 
     <section class="hero-section">
-        <div class="hero-bg-animation">
-            <div class="bg-gradient-orb orb-1"></div>
-            <div class="bg-gradient-orb orb-2"></div>
-            <div class="bg-gradient-orb orb-3"></div>
-            
-            <div class="bg-particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-            
-            <div class="bg-lines">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-        </div>
-        
+        <!-- Particles Container -->
+        <div class="particles-container" id="particles"></div>
+        <video class="hero-video" autoplay muted loop playsinline
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+            <source src="vidhome2.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="featured-tag">PREMIUM REAL ESTATE</div>
             <h1 class="hero-title">Ab Ham Bhi Honge Ghar Wale</h1>
             <p class="hero-subtitle">Kyunki Ab Indore Mein Aa Gaye Hai Shivalay Infratech Wale</p>
             <p class="hero-details">Ghar Ke Honge Sapne Sakar Shivalay Infratech Ke Sath</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="learn-more-btn">Explore Projects</a>
-                <button class="learn-more-btn-secondary" id="bookBtnHero">Book Site Visit</button>
-            </div>
+            <a href="#projects" class="learn-more-btn">Explore Projects</a>
         </div>
     </section>
 
     <section class="about-section" id="about">
         <div class="about-container">
-            <div class="about-text">
-                <div class="section-label scroll-reveal">ABOUT SHIVALAY INFRATECH</div>
-                <h2 class="about-title scroll-reveal">Building Trust, Delivering Dreams</h2>
-                <p class="scroll-reveal stagger-1">Since 2012, Shivalay Infratech has been Indore's trusted name in premium real estate development. With over 13 years of excellence, we have successfully delivered 25+ projects, creating homes for more than 500 happy families.</p>
-                <p class="scroll-reveal stagger-2">Our commitment to 100% RERA compliance, transparent dealings, and timely delivery has made us a preferred choice for discerning homebuyers. Every project reflects our dedication to quality construction, modern amenities, and prime locations.</p>
-                <p class="scroll-reveal stagger-3">We don't just build properties – we create communities where families thrive and memories are made.</p>
-                <button class="read-more-btn scroll-reveal stagger-4" id="bookBtnAbout">Schedule Site Visit</button>
+            <div class="about-text fade-in">
+                <div class="section-label">ABOUT SHIVALAY INFRATECH</div>
+                <h2 class="about-title">Building Trust, Delivering Dreams</h2>
+                <p>Since 2012, Shivalay Infratech has been Indore's trusted name in premium real estate development.
+                    With over 13 years of excellence, we have successfully delivered 25+ projects, creating homes for
+                    more than 500 happy families.</p>
+                <p>Our commitment to 100% RERA compliance, transparent dealings, and timely delivery has made us a
+                    preferred choice for discerning homebuyers. Every project reflects our dedication to quality
+                    construction, modern amenities, and prime locations.</p>
+                <p>We don't just build properties – we create communities where families thrive and memories are made.
+                </p>
+                <a href="#contact" class="read-more-btn">Schedule Site Visit</a>
             </div>
-            <div class="about-image scroll-reveal-right">
+            <div class="about-image fade-in">
                 <img src="shivalay.jpg" alt="About Shivalay">
             </div>
         </div>
@@ -1806,23 +2433,23 @@
 
     <section class="stats-section">
         <div class="stats-container">
-            <h2 class="stats-title scroll-reveal">Excellence in Numbers</h2>
-            <p class="stats-subtitle scroll-reveal">13+ years of building trust and delivering quality homes in Indore</p>
+            <h2 class="stats-title">Excellence in Numbers</h2>
+            <p class="stats-subtitle">13+ years of building trust and delivering quality homes in Indore</p>
             <div class="stats-grid">
-                <div class="stat-item scroll-scale stagger-1">
+                <div class="stat-item fade-in">
                     <div class="stat-value">2012</div>
                     <div class="stat-label">Established</div>
                 </div>
-                <div class="stat-item scroll-scale stagger-2">
-                    <div class="stat-value" data-target="500">0</div>
+                <div class="stat-item fade-in">
+                    <div class="stat-value">500+</div>
                     <div class="stat-label">Happy Families</div>
                 </div>
-                <div class="stat-item scroll-scale stagger-3">
-                    <div class="stat-value" data-target="25">0</div>
+                <div class="stat-item fade-in">
+                    <div class="stat-value">25+</div>
                     <div class="stat-label">Projects Delivered</div>
                 </div>
-                <div class="stat-item scroll-scale stagger-4">
-                    <div class="stat-value" data-target="100">0</div>
+                <div class="stat-item fade-in">
+                    <div class="stat-value">100%</div>
                     <div class="stat-label">RERA Approved</div>
                 </div>
             </div>
@@ -1832,68 +2459,90 @@
     <section id="projects" class="projects-section">
         <div class="projects-container">
             <div class="projects-header">
-                <div class="section-label scroll-reveal">FEATURED PROPERTIES</div>
-                <h2 class="projects-title scroll-reveal">Premium Projects in Indore</h2>
+                <div class="section-label">FEATURED PROPERTIES</div>
+                <h2 class="projects-title">Premium Projects in Indore</h2>
             </div>
             <div class="projects-grid">
-                <div class="project-card scroll-reveal stagger-1">
+                <div class="project-card fade-in">
                     <div class="project-image">
                         <img src="Screenshot (124).png" alt="Shanti Vihar">
                     </div>
                     <div class="project-info">
                         <div class="project-category">PLOTS • UJJAIN ROAD</div>
                         <h3 class="project-title">Shanti Vihar</h3>
-                        <p class="project-description">Premium plots with 70% loan facility, double road access, and full building permits. Eco-friendly community with modern amenities.</p>
+                        <p class="project-description">Premium plots with 70% loan facility, double road access, and
+                            full building permits. Eco-friendly community with modern amenities.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
 
-                <div class="project-card scroll-reveal stagger-2">
+                <div class="project-card fade-in">
                     <div class="project-image">
                         <img src="Screenshot (132).png" alt="Sankeshwar City">
                     </div>
                     <div class="project-info">
                         <div class="project-category">APARTMENTS • FROM ₹52.79L</div>
                         <h3 class="project-title">Sankeshwar City</h3>
-                        <p class="project-description">2BHK, 2.5BHK & 3BHK apartments opposite Aurobindo Hospital. Modular kitchen, gymnasium, terrace garden. Free registration & stamp duty.</p>
+                        <p class="project-description">2BHK, 2.5BHK & 3BHK apartments opposite Aurobindo Hospital.
+                            Modular kitchen, gymnasium, terrace garden. Free registration & stamp duty.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
 
-                <div class="project-card scroll-reveal stagger-3">
+                <div class="project-card fade-in">
                     <div class="project-image">
                         <img src="Screenshot (139).png" alt="Orion Sky">
                     </div>
                     <div class="project-info">
                         <div class="project-category">READY POSSESSION • ₹27L</div>
                         <h3 class="project-title">Orion Sky</h3>
-                        <p class="project-description">1 BHK at Kanak Smart City with registry free. Gated community near Aurobindo Hospital, 5 min to Metro. Green parks and bike paths.</p>
+                        <p class="project-description">1 BHK at Kanak Smart City with registry free. Gated community
+                            near Aurobindo Hospital, 5 min to Metro. Green parks and bike paths.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <section id="founder" class="founder-section">
         <div class="founder-container">
-            <div class="founder-image scroll-reveal-left">
+            <div class="founder-image fade-in">
                 <img src="founder.jpg" alt="Shiv Malviya">
             </div>
-            <div class="founder-text">
-                <div class="section-label scroll-reveal">LEADERSHIP</div>
-                <h2 class="scroll-reveal">Shiv Malviya</h2>
-                <p class="founder-role scroll-reveal">Founder & Managing Director</p>
-                <p class="founder-bio scroll-reveal stagger-1">Shiv Malviya founded Shivalay Infratech in 2012 with a vision to provide quality homes to families in Indore. With over 13 years of excellence in real estate development, he has established the company as one of the most trusted names in Indore's property market.</p>
-                <p class="founder-bio scroll-reveal stagger-2">Under his leadership, Shivalay Infratech has delivered 25+ successful projects, providing dream homes to over 500 happy families. Every project reflects his commitment to 100% RERA compliance, transparent business practices, and customer satisfaction.</p>
-                <div class="founder-credentials scroll-reveal stagger-3">
+            <div class="founder-text fade-in">
+                <div class="section-label">LEADERSHIP</div>
+                <h2>Shiv Malviya</h2>
+                <p class="founder-role">Founder & Managing Director</p>
+
+                <p class="founder-bio">
+                    Shiv Malviya founded Shivalay Infratech in 2012 with a vision to provide quality homes to families
+                    in Indore. With over 13 years of excellence in real estate development, he has established the
+                    company as one of the most trusted names in Indore's property market.
+                </p>
+
+                <p class="founder-bio">
+                    Under his leadership, Shivalay Infratech has delivered 25+ successful projects, providing dream
+                    homes to over 500 happy families. Every project reflects his commitment to 100% RERA compliance,
+                    transparent business practices, and customer satisfaction.
+                </p>
+
+                <p class="founder-bio">
+                    His dedication to quality, ethical practices, and modern amenities has made Shivalay Infratech
+                    synonymous with reliability in Indore's real estate sector.
+                </p>
+
+                <div class="founder-credentials">
                     <div class="credential-item">
                         <div class="credential-label">EXPERIENCE</div>
-                        <div class="credential-value">13+ Years in Real Estate Development<br>25+ Projects Delivered<br>500+ Happy Families</div>
+                        <div class="credential-value">13+ Years in Real Estate Development<br>25+ Projects
+                            Delivered<br>500+ Happy Families</div>
                     </div>
                     <div class="credential-item">
                         <div class="credential-label">CERTIFICATIONS</div>
-                        <div class="credential-value">100% RERA Approved Projects<br>Transparent Business Practices<br>Quality Construction Standards</div>
+                        <div class="credential-value">100% RERA Approved Projects<br>Transparent Business
+                            Practices<br>Quality Construction Standards</div>
                     </div>
                 </div>
             </div>
@@ -1903,307 +2552,684 @@
     <section class="why-us-section">
         <div class="why-us-container">
             <div class="why-us-header">
-                <div class="section-label scroll-reveal">WHY CHOOSE US</div>
-                <h2 class="why-us-title scroll-reveal">Our Core Values</h2>
+                <div class="section-label">WHY CHOOSE US</div>
+                <h2 class="why-us-title">Our Core Values</h2>
             </div>
             <div class="why-us-grid">
-                <div class="why-us-item scroll-reveal stagger-1">
+                <div class="why-us-item fade-in">
                     <div class="why-us-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3>100% RERA Approved</h3>
-                    <p>All our projects are registered and compliant with RERA regulations, ensuring complete legal transparency and buyer protection.</p>
+                    <p>All our projects are registered and compliant with RERA regulations, ensuring complete legal
+                        transparency and buyer protection.</p>
                 </div>
 
-                <div class="why-us-item scroll-reveal stagger-2">
+                <div class="why-us-item fade-in">
                     <div class="why-us-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3>Timely Delivery</h3>
-                    <p>We pride ourselves on delivering projects on time. Our track record speaks for our commitment to promised possession dates.</p>
+                    <p>We pride ourselves on delivering projects on time. Our track record speaks for our commitment to
+                        promised possession dates.</p>
                 </div>
 
-                <div class="why-us-item scroll-reveal stagger-3">
+                <div class="why-us-item fade-in">
                     <div class="why-us-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3>Transparent Pricing</h3>
-                    <p>No hidden costs or last-minute surprises. Our pricing is straightforward and honest, building trust with every transaction.</p>
+                    <p>No hidden costs or last-minute surprises. Our pricing is straightforward and honest, building
+                        trust with every transaction.</p>
                 </div>
 
-                <div class="why-us-item scroll-reveal stagger-4">
+                <div class="why-us-item fade-in">
                     <div class="why-us-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                     </div>
                     <h3>Prime Locations</h3>
-                    <p>Strategic locations across Indore with excellent connectivity to schools, hospitals, metro, and commercial hubs.</p>
+                    <p>Strategic locations across Indore with excellent connectivity to schools, hospitals, metro, and
+                        commercial hubs.</p>
                 </div>
 
-                <div class="why-us-item scroll-reveal stagger-5">
+                <div class="why-us-item fade-in">
                     <div class="why-us-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
                     <h3>Quality Construction</h3>
-                    <p>Premium materials and best construction practices in every project. We never compromise on structural integrity and finishing.</p>
+                    <p>Premium materials and best construction practices in every project. We never compromise on
+                        structural integrity and finishing.</p>
                 </div>
 
-                <div class="why-us-item scroll-reveal stagger-6">
+                <div class="why-us-item fade-in">
                     <div class="why-us-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <h3>Customer First</h3>
-                    <p>Dedicated support from booking to possession and beyond. Our relationship doesn't end at key handover.</p>
+                    <p>Dedicated support from booking to possession and beyond. Our relationship doesn't end at key
+                        handover.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="contact">
+
+    <section class="inside-infra-section">
+        <div class="inside-infra-container">
+            <div class="inside-infra-header fade-in">
+                <div class="section-label">BEHIND THE SCENES</div>
+                <h2 class="inside-infra-title">Inside Shivalay Infra</h2>
+                <p class="inside-infra-subtitle">Experience our commitment to quality and excellence</p>
+            </div>
+            <div class="inside-infra-grid">
+                <div class="vertical-video-item fade-in" data-video="vidsit.mp4">
+                    <div class="vertical-video-wrapper">
+                        <img src="Screenshot (141).png" alt="Construction">
+                        <div class="video-play-overlay">
+                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                        </div>
+                        <div class="video-gradient-overlay">
+                            <div class="video-meta">
+                                <h4>Construction Excellence</h4>
+                                <p>Quality Building</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-video-item fade-in" data-video="vid3.mp4">
+                    <div class="vertical-video-wrapper">
+                        <img src="Screenshot (142).png" alt="Team">
+                        <div class="video-play-overlay">
+                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                        </div>
+                        <div class="video-gradient-overlay">
+                            <div class="video-meta">
+                                <h4>Expert Team</h4>
+                                <p>Professionals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-video-item fade-in" data-video="vid4.mp4">
+                    <div class="vertical-video-wrapper">
+                        <img src="Screenshot (143).png" alt="Quality">
+                        <div class="video-play-overlay">
+                            <svg class="play-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                        </div>
+                        <div class="video-gradient-overlay">
+                            <div class="video-meta">
+                                <h4>Quality Standards</h4>
+                                <p>Precision Care</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="properties-showcase-section">
+        <div class="properties-showcase-container">
+            <div class="properties-showcase-header fade-in">
+                <div class="section-label">VIRTUAL TOURS</div>
+                <h2 class="properties-showcase-title">Some Of Our Properties</h2>
+                <p class="properties-showcase-subtitle">Explore our premium developments</p>
+            </div>
+            <div class="properties-showcase-grid">
+                <div class="property-video-card fade-in" data-video="vid10.mp4">
+                    <div class="property-video-wrapper">
+                        <img src="Screenshot (144).png" alt="Sankeshwar">
+                        <div class="property-play-overlay">
+                            <svg class="play-btn-large" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                        </div>
+                        <div class="property-gradient-overlay">
+                            <div class="property-badge">FEATURED</div>
+                            <div class="property-details">
+                                <h3>Perfect Home </h3>
+
+                                <p class="property-location">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    premium propeties
+                                </p>
+                                <div class="property-price">Get your house now </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-video-card fade-in" data-video="suiji.mp4">
+                    <div class="property-video-wrapper">
+                        <img src="office.jpg" alt="Orion">
+                        <div class="property-play-overlay">
+                            <svg class="play-btn-large" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                        </div>
+                        <div class="property-gradient-overlay">
+                            <div class="property-badge">Ready to move in </div>
+                            <div class="property-details">
+                                <h3>Shri vidya vihar </h3>
+                                <p class="property-location">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    Premium colony
+                                </p>
+                                <div class="property-price">Ready to settle</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-gallery-section">
+        <div class="image-gallery-container">
+            <div class="image-gallery-header fade-in">
+                <div class="section-label">OUR PORTFOLIO</div>
+                <h2 class="image-gallery-title">Project Gallery</h2>
+                <p class="image-gallery-subtitle">Explore our developments</p>
+            </div>
+
+            <div class="gallery-scroll-wrapper">
+                <div class="gallery-scroll-container" id="galleryContainer">
+                    <div class="gallery-item">
+                        <img src="Screenshot (125).png" alt="Gallery 1">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 1</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (126).png" alt="Gallery 2">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 2</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (127).png" alt="Gallery 3">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 3</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (128).png" alt="Gallery 4">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 4</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (130).png" alt="Gallery 5">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 5</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (132).png" alt="Gallery 6">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 6</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (133).png" alt="Gallery 7">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 7</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (135).png" alt="Gallery 8">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 8</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (125).png" alt="Gallery 9">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 9</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (127).png" alt="Gallery 10">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 10</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (138).png" alt="Gallery 11">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 11</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (137).png" alt="Gallery 12">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infrar</h4>
+                            <p>View 12</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Screenshot (134).png" alt="Gallery 13">
+                        <div class="gallery-overlay">
+                            <h4>Shivalay infra</h4>
+                            <p>View 13</p>
+                        </div>
+                    </div>
+
+    </section>
+
+    <div class="video-player-modal" id="videoPlayerModal">
+        <div class="video-player-backdrop"></div>
+        <div class="video-player-content">
+            <button class="video-player-close" id="videoPlayerClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <video id="videoPlayer" controls>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <section id="contact" class="cta-section">
         <div class="cta-content">
-            <h2 class="cta-title scroll-reveal">Ready To Own Your Dream Home?</h2>
-            <p class="cta-text scroll-reveal">Contact us today and let our experts guide you to your perfect property in Indore</p>
-            <button class="contact-btn scroll-reveal" id="bookBtnCTA">Contact Us Now</button>
+            <h2 class="cta-title">Find Your Dream Home</h2>
+            <p class="cta-text">Explore our RERA approved projects with modern amenities and prime locations in Indore.
+                Schedule a site visit today and take the first step towards owning your dream home.</p>
+            <button class="contact-btn" id="ctaBook">Book Site Visit</button>
         </div>
     </section>
 
     <footer>
         <div class="footer-container">
-            <div class="footer-section scroll-fade">
+            <div class="footer-section">
                 <h3>Shivalay Infratech</h3>
-                <p>Premium residential properties in Indore with 13 years of excellence and 100% RERA approved projects. Trusted by 500+ happy families.</p>
+                <p>Premium residential properties in Indore with 13 years of excellence and 100% RERA approved projects.
+                    Trusted by 500+ happy families.</p>
                 <div class="social-links">
-                    <a href="https://wa.me/919589524809" class="social-link" target="_blank" rel="noopener">
+                    <a href="https://wa.me/919589524809" class="social-link" title="WhatsApp">
                         <svg viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
                     </a>
-                    <a href="tel:+919589524809" class="social-link">
+                    <a href="tel:+919589524809" class="social-link" title="Phone">
                         <svg viewBox="0 0 24 24">
-                            <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
-                            <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/>
+                            <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
+                            <path
+                                d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
                         </svg>
                     </a>
-                    <a href="mailto:shivalayinfratech@gmail.com" class="social-link">
+                    <a href="mailto:shivalayinfratech@gmail.com" class="social-link" title="Email">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            <path
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com" class="social-link" title="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" title="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" class="social-link" title="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                     </a>
                 </div>
             </div>
 
-            <div class="footer-section scroll-fade">
+            <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#founder">Leadership</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
 
-            <div class="footer-section scroll-fade">
+            <div class="footer-section">
                 <h3>Projects</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Shanti Vihar</a></li>
-                    <li><a href="#">Sankeshwar City</a></li>
-                    <li><a href="#">Orion Sky</a></li>
+                    <li><a href="#projects">Shanti Vihar</a></li>
+                    <li><a href="#projects">Sankeshwar City</a></li>
+                    <li><a href="#projects">Orion Sky</a></li>
+                    <li><a href="#projects">Shivalay Heights</a></li>
                 </ul>
             </div>
 
-            <div class="footer-section scroll-fade">
+            <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Phone: +91 95895 24809</p>
-                <p>Email: shivalayinfratech@gmail.com</p>
-                <p>Location: Indore, Madhya Pradesh</p>
+                <div class="contact-info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                    <p>Kanak Smart City, Indore</p>
+                </div>
+                <div class="contact-info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z" />
+                        <path
+                            d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z" />
+                    </svg>
+                    <p>+91 9589524809</p>
+                </div>
+                <div class="contact-info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z" />
+                    </svg>
+                    <p>Mon - Sat: 10 AM - 7 PM</p>
+                </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Shivalay Infratech. All rights reserved. Building Dreams Since 2012</p>
+            <p>2025 Shivalay Infratech. All Rights Reserved.<br>100% RERA Approved | Indore, Madhya Pradesh</p>
+            <p class="footer-credit">Made by <a href="https://raweditt.com" target="_blank">Raweditt</a> in
+                collaboration with <a href="https://thesemicolon.online" target="_blank">Semicolon</a></p>
         </div>
     </footer>
 
     <div class="form-modal" id="formModal">
         <div class="form-container">
             <button class="form-close" id="formClose">×</button>
+
             <div class="form-header">
-                <h2 class="form-title">Book Your Site Visit</h2>
-                <p class="form-subtitle">Fill in your details and we'll contact you shortly</p>
+                <h3 class="form-title">Book Site Visit</h3>
+                <p class="form-subtitle">Fill the form and we'll contact you shortly</p>
             </div>
-            <form class="booking-form" id="bookingForm">
+
+            <form id="bookingForm">
                 <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" id="name" required placeholder="Enter your name">
                 </div>
+
                 <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-input" id="phone" required placeholder="+91 12345 67890">
                 </div>
+
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="email" placeholder="your@email.com">
                 </div>
+
                 <div class="form-group">
-                    <label for="project">Interested Project *</label>
-                    <select id="project" name="project" required>
+                    <label class="form-label">Interested Project *</label>
+                    <select class="form-select" id="project" required>
                         <option value="">Select a project</option>
-                        <option value="Shanti Vihar">Shanti Vihar - Plots</option>
-                        <option value="Sankeshwar City">Sankeshwar City - Apartments</option>
-                        <option value="Orion Sky">Orion Sky - 1BHK</option>
-                        <option value="Other">Other Projects</option>
+                        <option value="Shanti Vihar">Shanti Vihar </option>
+                        <option value="Sankeshwar City">Sankeshwar City </option>
+                        <option value="Orion Sky">Orion Sky</option>
+
+                        <option value="Other">Other / General Inquiry</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Any specific requirements or questions?"></textarea>
+                    <label class="form-label">Preferred Visit Date</label>
+                    <input type="date" class="form-input" id="date">
                 </div>
-                <button type="submit" class="form-submit">Submit Booking Request</button>
+
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" id="message" placeholder="Any specific requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Submit to WhatsApp</button>
             </form>
         </div>
     </div>
 
     <script>
+        // Preloader - Fade out after page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('preloader').classList.add('fade-out');
-            }, 2500);
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 800);
+                }
+            }, 2000);
         });
 
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        // Create Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            if (!container) return;
 
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particle.style.width = (2 + Math.random() * 4) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
         }
+        createParticles();
 
-        hamburger.addEventListener('click', toggleMenu);
-        mobileOverlay.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-        const header = document.getElementById('header');
+        // Header scroll effect
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        const formModal = document.getElementById('formModal');
-        const formClose = document.getElementById('formClose');
-        const bookButtons = [
-            document.getElementById('bookBtnDesktop'),
-            document.getElementById('bookBtnMobile'),
-            document.getElementById('bookBtnHero'),
-            document.getElementById('bookBtnAbout'),
-            document.getElementById('bookBtnCTA')
-        ];
-
-        function openModal() {
-            formModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            formModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        bookButtons.forEach(btn => {
-            if (btn) {
-                btn.addEventListener('click', openModal);
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
 
-        formClose.addEventListener('click', closeModal);
-        formModal.addEventListener('click', (e) => {
-            if (e.target === formModal) closeModal();
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function openMobileMenu() {
+            hamburger.classList.add('active');
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
 
-        const bookingForm = document.getElementById('bookingForm');
-        bookingForm.addEventListener('submit', (e) => {
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Form Modal
+        const formModal = document.getElementById('formModal');
+        const formClose = document.getElementById('formClose');
+        const bookButtons = [
+            document.getElementById('bookAppointment'),
+            document.getElementById('mobileBook'),
+            document.getElementById('ctaBook')
+        ];
+
+        bookButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    formModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    closeMobileMenu();
+                });
+            }
+        });
+
+        formClose.addEventListener('click', () => {
+            formModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        formModal.addEventListener('click', (e) => {
+            if (e.target === formModal) {
+                formModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Form submission to WhatsApp
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            const fullName = document.getElementById('fullName').value;
+
+            const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const project = document.getElementById('project').value;
+            const date = document.getElementById('date').value;
             const message = document.getElementById('message').value;
-            
-            const whatsappMessage = `*New Site Visit Booking*%0A%0A*Name:* ${encodeURIComponent(fullName)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Email:* ${encodeURIComponent(email || 'Not provided')}%0A*Project:* ${encodeURIComponent(project)}%0A*Message:* ${encodeURIComponent(message || 'None')}`;
-            
+
+            let whatsappMessage = `*New Site Visit Request*%0A%0A`;
+            whatsappMessage += `*Name:* ${encodeURIComponent(name)}%0A`;
+            whatsappMessage += `*Phone:* ${encodeURIComponent(phone)}%0A`;
+            if (email) whatsappMessage += `*Email:* ${encodeURIComponent(email)}%0A`;
+            whatsappMessage += `*Project:* ${encodeURIComponent(project)}%0A`;
+            if (date) whatsappMessage += `*Preferred Date:* ${encodeURIComponent(date)}%0A`;
+            if (message) whatsappMessage += `*Message:* ${encodeURIComponent(message)}%0A`;
+            whatsappMessage += `%0A_Sent from Shivalay Infratech Website_`;
+
             const whatsappURL = `https://wa.me/919589524809?text=${whatsappMessage}`;
-            
             window.open(whatsappURL, '_blank');
-            
-            closeModal();
-            bookingForm.reset();
-            
-            setTimeout(() => {
-                alert('Thank you! Your details have been sent to WhatsApp.');
-            }, 500);
+
+            formModal.classList.remove('active');
+            document.body.style.overflow = '';
+            e.target.reset();
         });
 
+        // Enhanced Intersection Observer for fade-in elements
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -80px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
-        const scrollObserver = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        const animatedElements = document.querySelectorAll(
-            '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-scale, .scroll-fade'
-        );
-        
-        animatedElements.forEach(el => scrollObserver.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-        const counters = document.querySelectorAll('.stat-value[data-target]');
-        const counterObserver = new IntersectionObserver((entries) => {
+        // Section Reveal Observer
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const finalValue = parseInt(target.getAttribute('data-target'));
-                    const duration = 2000;
-                    const increment = finalValue / (duration / 16);
-                    
-                    let current = 0;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= finalValue) {
-                            current = finalValue;
-                            clearInterval(timer);
-                        }
-                        target.textContent = Math.floor(current) + (finalValue === 100 ? '%' : '+');
-                    }, 16);
-                    
-                    counterObserver.unobserve(target);
+                    entry.target.classList.add('revealed');
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.1 });
 
-        counters.forEach(counter => counterObserver.observe(counter));
+        document.querySelectorAll('.section-reveal').forEach(section => {
+            sectionObserver.observe(section);
+        });
 
+        // Stagger Animation for items
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, entry.target.dataset.staggerDelay || 0);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.stagger-item').forEach((item, index) => {
+            item.dataset.staggerDelay = index * 100;
+            staggerObserver.observe(item);
+        });
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -2211,6 +3237,108 @@
                 }
             });
         });
+
+        // Video Player Modal
+        const videoPlayerModal = document.getElementById('videoPlayerModal');
+        const videoPlayerClose = document.getElementById('videoPlayerClose');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const allVideoItems = document.querySelectorAll('.vertical-video-item, .property-video-card');
+
+        allVideoItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const videoSrc = this.getAttribute('data-video');
+                videoPlayer.querySelector('source').src = videoSrc;
+                videoPlayer.load();
+                videoPlayerModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    videoPlayer.play().catch(e => console.log('Autoplay prevented'));
+                }, 300);
+            });
+        });
+
+        function closeVideoPlayer() {
+            videoPlayerModal.classList.remove('active');
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+            document.body.style.overflow = '';
+        }
+
+        if (videoPlayerClose) {
+            videoPlayerClose.addEventListener('click', closeVideoPlayer);
+        }
+
+        const videoBackdrop = videoPlayerModal?.querySelector('.video-player-backdrop');
+        if (videoBackdrop) {
+            videoBackdrop.addEventListener('click', closeVideoPlayer);
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && videoPlayerModal?.classList.contains('active')) {
+                closeVideoPlayer();
+            }
+        });
+
+        // Image Gallery Auto-scroll (with null checks)
+        const galleryContainer = document.getElementById('galleryContainer');
+        if (galleryContainer) {
+            const galleryWrapper = galleryContainer.parentElement;
+            let isAutoScrolling = true;
+            let scrollSpeed = 1;
+            let isDragging = false;
+            let startX, scrollLeft;
+
+            function autoScroll() {
+                if (isAutoScrolling && !isDragging && galleryWrapper) {
+                    galleryWrapper.scrollLeft += scrollSpeed;
+                    if (galleryWrapper.scrollLeft >= galleryWrapper.scrollWidth - galleryWrapper.clientWidth) {
+                        galleryWrapper.scrollLeft = 0;
+                    }
+                }
+                requestAnimationFrame(autoScroll);
+            }
+
+            autoScroll();
+
+            galleryWrapper.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - galleryWrapper.offsetLeft;
+                scrollLeft = galleryWrapper.scrollLeft;
+            });
+
+            galleryWrapper.addEventListener('mouseleave', () => isDragging = false);
+            galleryWrapper.addEventListener('mouseup', () => isDragging = false);
+
+            galleryWrapper.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - galleryWrapper.offsetLeft;
+                galleryWrapper.scrollLeft = scrollLeft - (x - startX) * 2;
+            });
+
+            let touchStartX = 0;
+            galleryWrapper.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                touchStartX = e.touches[0].pageX;
+                scrollLeft = galleryWrapper.scrollLeft;
+            });
+
+            galleryWrapper.addEventListener('touchend', () => isDragging = false);
+
+            galleryWrapper.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                galleryWrapper.scrollLeft = scrollLeft + (touchStartX - e.touches[0].pageX) * 2;
+            });
+        }
+
+        // Animate hero text on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.style.opacity = '1';
+            }
+        });
+
     </script>
 </body>
 
