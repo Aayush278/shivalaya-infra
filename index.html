@@ -42,7 +42,7 @@
             --glow-purple: 0 0 30px rgba(168, 85, 247, 0.5);
         }
 
-        /* Animated Gradient Blob Background */
+        /* Simple Static Gradient Background - No animations for smooth performance */
         .gradient-bg {
             position: fixed;
             top: 0;
@@ -50,160 +50,19 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            overflow: hidden;
             pointer-events: none;
-        }
-
-        /* Subtle Aurora Gradient Layer */
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg,
-                    transparent 0%,
-                    rgba(0, 212, 255, 0.03) 25%,
-                    transparent 50%,
-                    rgba(168, 85, 247, 0.03) 75%,
-                    transparent 100%);
-            animation: auroraShift 30s ease-in-out infinite;
-        }
-
-        /* Mesh Gradient Overlay */
-        .gradient-bg::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background:
-                radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 60%);
-            animation: meshPulse 15s ease-in-out infinite alternate;
+                radial-gradient(ellipse at 15% 85%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 15%, rgba(168, 85, 247, 0.06) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 55%);
         }
 
-        @keyframes auroraShift {
-
-            0%,
-            100% {
-                transform: translate(-25%, -25%) rotate(0deg);
-            }
-
-            50% {
-                transform: translate(-25%, -25%) rotate(180deg);
-            }
-        }
-
-        @keyframes meshPulse {
-            0% {
-                opacity: 0.6;
-                transform: scale(1);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-        }
-
+        /* Hide all gradient blobs */
         .gradient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
-            animation: blobMove 25s ease-in-out infinite;
-            mix-blend-mode: screen;
+            display: none;
         }
 
-        .gradient-blob-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.5) 0%, transparent 70%);
-            top: -150px;
-            left: -150px;
-            animation-delay: 0s;
-        }
-
-        .gradient-blob-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, transparent 70%);
-            top: 35%;
-            right: -100px;
-            animation-delay: -6s;
-            animation-duration: 28s;
-        }
-
-        .gradient-blob-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
-            bottom: 15%;
-            left: 25%;
-            animation-delay: -12s;
-            animation-duration: 26s;
-        }
-
-        .gradient-blob-4 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
-            top: 55%;
-            left: -80px;
-            animation-delay: -18s;
-            animation-duration: 32s;
-        }
-
-        /* Additional subtle floating orbs */
-        .gradient-blob-5 {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
-            top: 20%;
-            right: 20%;
-            animation-delay: -8s;
-            animation-duration: 35s;
-        }
-
-        .gradient-blob-6 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
-            bottom: 30%;
-            right: 10%;
-            animation-delay: -20s;
-            animation-duration: 30s;
-        }
-
-        @keyframes blobMove {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-
-            20% {
-                transform: translate(60px, 40px) scale(1.05) rotate(72deg);
-            }
-
-            40% {
-                transform: translate(30px, 80px) scale(0.95) rotate(144deg);
-            }
-
-            60% {
-                transform: translate(-40px, 60px) scale(1.08) rotate(216deg);
-            }
-
-            80% {
-                transform: translate(-20px, 20px) scale(0.98) rotate(288deg);
-            }
-        }
-
-        /* Subtle Gradient Line Accent */
+        /* Subtle Gradient Line Accent at bottom */
         .gradient-line {
             position: fixed;
             bottom: 0;
@@ -212,12 +71,11 @@
             height: 2px;
             background: linear-gradient(90deg,
                     transparent,
-                    rgba(0, 212, 255, 0.5),
-                    rgba(99, 102, 241, 0.5),
-                    rgba(168, 85, 247, 0.5),
+                    rgba(0, 212, 255, 0.4),
+                    rgba(168, 85, 247, 0.4),
                     transparent);
             background-size: 200% 100%;
-            animation: gradientFlow 8s linear infinite;
+            animation: gradientFlow 12s linear infinite;
             z-index: 9998;
         }
 
@@ -228,6 +86,12 @@
 
             100% {
                 background-position: -200% 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gradient-line {
+                animation: none;
             }
         }
 
