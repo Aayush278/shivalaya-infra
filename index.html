@@ -71,33 +71,17 @@
             height: 2px;
             background: linear-gradient(90deg,
                     transparent,
-                    rgba(245, 158, 11, 0.4),
-                    rgba(234, 88, 12, 0.4),
+                    rgba(245, 158, 11, 0.3),
+                    rgba(234, 88, 12, 0.3),
                     transparent);
-            background-size: 200% 100%;
-            animation: gradientFlow 12s linear infinite;
             z-index: 9998;
-        }
-
-        @keyframes gradientFlow {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
         }
 
         /* MOBILE PERFORMANCE: Disable heavy animations on phones */
         @media (max-width: 767px),
         (prefers-reduced-motion: reduce) {
-            .gradient-line {
-                animation: none;
-            }
-
-            .floating-whatsapp {
-                animation: none;
+            .floating-whatsapp::before {
+                display: none;
             }
 
             .floating-whatsapp::before {
@@ -158,28 +142,14 @@
             }
         }
 
-        /* DESKTOP/LAPTOP: Reduced animations for better performance */
+        /* DESKTOP: Clean, simple interactions */
         @media (min-width: 768px) {
 
-            /* Disable heavy floating animation on desktop too */
-            .floating-whatsapp {
-                animation: none;
-            }
-
-            .floating-whatsapp::before {
-                display: none;
-            }
-
-            /* Keep gradient line but slow it down */
-            .gradient-line {
-                animation-duration: 20s;
-            }
-
-            /* Simplify card hover effects */
+            /* Simple card hover effects */
             .testimonial-card:hover,
             .why-us-item:hover,
             .project-card:hover {
-                transform: translateY(-5px);
+                transform: translateY(-4px);
             }
         }
 
@@ -260,69 +230,33 @@
             }
         }
 
-        /* Floating WhatsApp Button */
+        /* Floating WhatsApp Button - Simple and Clean */
         .floating-whatsapp {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            width: 56px;
+            height: 56px;
+            background: #25d366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: floatBounce 3s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .floating-whatsapp:hover {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
         .floating-whatsapp svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             fill: white;
-        }
-
-        .floating-whatsapp::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: inherit;
-            z-index: -1;
-            animation: ripple 2s ease-out infinite;
-        }
-
-        @keyframes floatBounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(1.8);
-                opacity: 0;
-            }
         }
 
         /* Animated Text Effect */
@@ -378,52 +312,17 @@
             background-clip: text;
         }
 
-        /* Particle Background */
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 2;
-        }
-
+        /* Particle Background - Disabled for performance */
+        .particles-container,
         .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(201, 168, 108, 0.6);
-            border-radius: 50%;
-            animation: float-particle 15s infinite linear;
+            display: none;
         }
 
-        @keyframes float-particle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Enhanced Section Transitions */
+        /* Section Reveal - Simple fade */
         .section-reveal {
             opacity: 0;
-            transform: translateY(60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .section-reveal.revealed {
@@ -431,11 +330,11 @@
             transform: translateY(0);
         }
 
-        /* Stagger Animation */
+        /* Stagger Animation - Simplified */
         .stagger-item {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .stagger-item.visible {
@@ -488,7 +387,7 @@
             border-radius: 16px;
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
             overflow: hidden;
         }
 
@@ -508,10 +407,8 @@
         }
 
         .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-            border-color: rgba(0, 212, 255, 0.5);
-            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+            border-color: rgba(245, 158, 11, 0.3);
         }
 
         .testimonial-text {
@@ -637,15 +534,7 @@
             }
         }
 
-        /* 3D Card Hover Effect */
-        .card-3d {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .card-3d:hover {
-            transform: rotateY(5deg) rotateX(5deg);
-        }
+        /* 3D effects disabled for smoothness */
 
         /* Cursor Trail Effect */
         .cursor-glow {
@@ -777,8 +666,6 @@
 
         .nav-links li a:hover {
             color: var(--primary-gold);
-            background: rgba(0, 212, 255, 0.08);
-            transform: translateY(-2px);
         }
 
         .nav-links li a:hover::before {
@@ -787,31 +674,10 @@
 
         .nav-links li a.active {
             color: var(--primary-gold);
-            background: rgba(0, 212, 255, 0.1);
         }
 
         .nav-links li a.active::before {
             width: 80%;
-        }
-
-        /* Glow effect on hover */
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-            z-index: -1;
-        }
-
-        .nav-links li a:hover::after {
-            width: 150px;
-            height: 150px;
         }
 
         @media (min-width: 768px) {
@@ -835,30 +701,13 @@
                 font-weight: 600;
                 cursor: pointer;
                 border-radius: 8px;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .book-btn::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-                transition: left 0.5s ease;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
             }
 
             .book-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
-            }
-
-            .book-btn:hover::before {
-                left: 100%;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35);
             }
         }
 
@@ -1074,6 +923,59 @@
             .hero-video-mobile {
                 display: block;
             }
+
+            .hero-slideshow {
+                display: none !important;
+            }
+        }
+
+        /* Desktop Image Slideshow */
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-slideshow .slide.active {
+            opacity: 1;
+        }
+
+        .hero-slideshow .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.02);
+            transition: transform 8s ease-out;
+        }
+
+        .hero-slideshow .slide.active img {
+            transform: scale(1.08);
+        }
+
+        /* Hide desktop video on PC, show slideshow instead */
+        @media (min-width: 768px) {
+            .hero-video-desktop {
+                display: none !important;
+            }
+
+            .hero-slideshow {
+                display: block;
+            }
         }
 
         .hero-overlay {
@@ -1237,33 +1139,15 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.4s;
+            transition: background 0.3s ease, color 0.3s ease;
             text-decoration: none;
             display: inline-block;
             margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .read-more-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-gold);
-            transition: left 0.4s;
-            z-index: -1;
         }
 
         .read-more-btn:hover {
+            background: var(--primary-gold);
             color: var(--dark);
-            border-color: transparent;
-        }
-
-        .read-more-btn:hover::before {
-            left: 0;
         }
 
         .about-image {
@@ -2889,11 +2773,31 @@
     <section class="hero-section">
         <!-- Particles Container -->
         <div class="particles-container" id="particles"></div>
-        <!-- Desktop Video -->
+        <!-- Desktop Video (hidden on PC, replaced by slideshow) -->
         <video class="hero-video hero-video-desktop" autoplay muted loop playsinline
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
             <source src="vidhome3.mp4" type="video/mp4">
         </video>
+
+        <!-- Desktop Image Slideshow (shown on PC only) -->
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Luxury Modern Home">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Premium Villa">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Contemporary Architecture">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Elegant Residence">
+            </div>
+        </div>
         <!-- Mobile Video -->
         <video class="hero-video hero-video-mobile" autoplay muted loop playsinline
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
@@ -3848,65 +3752,34 @@
         });
 
         // ============================================
-        // GOD LEVEL SCROLL ANIMATIONS
+        // SMOOTH SCROLL ANIMATIONS (Simplified)
         // ============================================
 
-        // Mobile detection for performance optimization
+        // Mobile detection
         const isMobile = window.matchMedia('(max-width: 767px)').matches ||
             'ontouchstart' in window ||
             navigator.maxTouchPoints > 0;
 
-        // Parallax Effect for sections - DESKTOP ONLY
-        const parallaxElements = document.querySelectorAll('.hero-section, .cta-section');
-
-        if (!isMobile) {
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-
-                parallaxElements.forEach(el => {
-                    const rate = scrolled * 0.3;
-                    el.style.backgroundPositionY = rate + 'px';
-                });
-            }, { passive: true });
-        }
-
-        // Advanced Scroll Reveal Animation System
+        // Simple Scroll Reveal Animation
         const scrollRevealElements = document.querySelectorAll('.fade-in, .project-card, .why-us-item, .testimonial-card, .stat-item');
 
         const scrollRevealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // Reduced delay on mobile for snappier feel
-                    const delay = isMobile ? 0 : (entry.target.dataset.delay || (Array.from(scrollRevealElements).indexOf(entry.target) % 4) * 100);
-
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        if (!isMobile) {
-                            entry.target.style.filter = 'blur(0)';
-                        }
-                    }, delay);
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px' });
+        }, { threshold: 0.1 });
 
-        scrollRevealElements.forEach((el, index) => {
+        scrollRevealElements.forEach((el) => {
             el.style.opacity = '0';
-            if (isMobile) {
-                // Simpler animation on mobile - no blur, no scale
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            } else {
-                // Full animation on desktop
-                el.style.transform = 'translateY(80px) scale(0.95)';
-                el.style.filter = 'blur(5px)';
-                el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-                el.dataset.delay = (index % 4) * 100;
-            }
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             scrollRevealObserver.observe(el);
         });
 
-        // Horizontal Text Slide Animation
+        // Title Reveal Animation
         const slideTitles = document.querySelectorAll('.projects-title, .why-us-title, .about-title, .inside-infra-title, .image-gallery-title, .testimonials-title, .stats-title, .founder-main-title, .properties-showcase-title');
 
         const titleObserver = new IntersectionObserver((entries) => {
@@ -3916,28 +3789,24 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1, rootMargin: '50px' });
+        }, { threshold: 0.1 });
 
         slideTitles.forEach(title => {
             title.style.opacity = '0';
-            title.style.transform = 'translateY(30px)';
-            title.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            title.style.transform = 'translateY(15px)';
+            title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             titleObserver.observe(title);
         });
 
-        // Counter Animation with easing
-        function animateCounter(el, target, duration = 2000) {
-            let start = 0;
+        // Counter Animation (simplified)
+        function animateCounter(el, target, duration = 1500) {
             const end = parseInt(target);
             const startTime = performance.now();
 
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-
-                // Easing function (ease-out-expo)
-                const easeOutExpo = 1 - Math.pow(2, -10 * progress);
-                const current = Math.floor(start + (end - start) * easeOutExpo);
+                const current = Math.floor(end * progress);
 
                 el.textContent = current + (target.includes('+') ? '+' : '') + (target.includes('%') ? '%' : '');
 
@@ -3955,96 +3824,50 @@
                 if (entry.isIntersecting && !entry.target.dataset.animated) {
                     entry.target.dataset.animated = 'true';
                     const originalText = entry.target.textContent;
-                    animateCounter(entry.target, originalText, 2500);
+                    animateCounter(entry.target, originalText, 1500);
                 }
             });
         }, { threshold: 0.5 });
 
         statValues.forEach(stat => counterObserver.observe(stat));
 
-        // Scale on Scroll Effect for images - DESKTOP ONLY
-        if (!isMobile) {
-            const scaleImages = document.querySelectorAll('.about-image img, .founder-image img, .project-image img');
+        // NOTE: Card glow pulse effects removed for performance
 
-            const scaleObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const scrollPos = entry.intersectionRatio;
-                        entry.target.style.transform = `scale(${1 + (1 - scrollPos) * 0.1})`;
-                    }
-                });
-            }, { threshold: Array.from({ length: 20 }, (_, i) => i / 20) });
+        // Hero Image Slideshow for Desktop
+        function initHeroSlideshow() {
+            const slideshow = document.getElementById('heroSlideshow');
+            if (!slideshow) return;
 
-            scaleImages.forEach(img => {
-                img.style.transition = 'transform 0.3s ease-out';
-                scaleObserver.observe(img);
-            });
+            // Only run on desktop (768px+)
+            if (window.innerWidth < 768) return;
 
-            // Magnetic Hover Effect for buttons - DESKTOP ONLY
-            const magneticButtons = document.querySelectorAll('.learn-more-btn, .read-more-btn, .contact-btn, .form-submit');
+            const slides = slideshow.querySelectorAll('.slide');
+            if (slides.length === 0) return;
 
-            magneticButtons.forEach(btn => {
-                btn.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
+            let currentSlide = 0;
+            const slideInterval = 5000; // 5 seconds per slide
 
-                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                });
+            function nextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
 
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = 'translate(0, 0)';
-                });
-            });
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                // Add active class to new slide
+                slides[currentSlide].classList.add('active');
+            }
+
+            // Start the slideshow
+            setInterval(nextSlide, slideInterval);
         }
 
-        // Smooth Section Highlight on Scroll
-        const sections = document.querySelectorAll('section');
-        let currentSection = null;
-
-        const sectionHighlightObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                    if (currentSection) {
-                        currentSection.style.opacity = '0.95';
-                    }
-                    currentSection = entry.target;
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transition = 'opacity 0.5s ease';
-                }
-            });
-        }, { threshold: [0.3, 0.7] });
-
-        sections.forEach(section => {
-            section.style.opacity = '0.95';
-            sectionHighlightObserver.observe(section);
-        });
-
-        // NOTE: Gradient text animation on scroll and 3D tilt effects 
-        // have been disabled for better performance on all devices
-
-
-        // Add floating animation keyframes dynamically
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = `
-            @keyframes floatUpDown {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-15px); }
-            }
-            
-            @keyframes glowPulse {
-                0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
-                50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
-            }
-            
-            @keyframes textShimmer {
-                0% { background-position: -200% center; }
-                100% { background-position: 200% center; }
-            }
-        `;
-        document.head.appendChild(styleSheet);
-
-        // NOTE: Card glow pulse effects removed for performance
+        // Initialize slideshow when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeroSlideshow);
+        } else {
+            initHeroSlideshow();
+        }
 
     </script>
 </body>
