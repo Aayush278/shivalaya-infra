@@ -2690,7 +2690,6 @@
 </head>
 
 <body>
-    <!-- Animated Gradient Background -->
     <div class="gradient-bg">
         <div class="gradient-blob gradient-blob-1"></div>
         <div class="gradient-blob gradient-blob-2"></div>
@@ -2700,10 +2699,8 @@
         <div class="gradient-blob gradient-blob-6"></div>
     </div>
 
-    <!-- Subtle Gradient Line Accent -->
     <div class="gradient-line"></div>
 
-    <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-logo">SHIVALAY INFRATECH</div>
         <div class="preloader-bar">
@@ -2711,7 +2708,6 @@
         </div>
     </div>
 
-    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919589524809" class="floating-whatsapp" title="Chat on WhatsApp" target="_blank">
         <svg viewBox="0 0 24 24">
             <path
@@ -2771,15 +2767,12 @@
     </div>
 
     <section class="hero-section">
-        <!-- Particles Container -->
         <div class="particles-container" id="particles"></div>
-        <!-- Desktop Video (hidden on PC, replaced by slideshow) -->
         <video class="hero-video hero-video-desktop" autoplay muted loop playsinline
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
             <source src="vidhome3.mp4" type="video/mp4">
         </video>
 
-        <!-- Desktop Image Slideshow (shown on PC only) -->
         <div class="hero-slideshow" id="heroSlideshow">
             <div class="slide active">
                 <img src="IMG20251226134147.jpg" alt="Luxury Modern Home">
@@ -2794,7 +2787,6 @@
                 <img src="IMG20251226134147.jpg" alt="Elegant Residence">
             </div>
         </div>
-        <!-- Mobile Video -->
         <video class="hero-video hero-video-mobile" autoplay muted loop playsinline
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
             <source src="phone.mp4" type="video/mp4">
@@ -3792,7 +3784,6 @@
             });
         }
 
-        // Animate hero text on load
         document.addEventListener('DOMContentLoaded', () => {
             const heroTitle = document.querySelector('.hero-title');
             if (heroTitle) {
@@ -3800,16 +3791,10 @@
             }
         });
 
-        // ============================================
-        // SMOOTH SCROLL ANIMATIONS (Simplified)
-        // ============================================
-
-        // Mobile detection
         const isMobile = window.matchMedia('(max-width: 767px)').matches ||
             'ontouchstart' in window ||
             navigator.maxTouchPoints > 0;
 
-        // Simple Scroll Reveal Animation
         const scrollRevealElements = document.querySelectorAll('.fade-in, .project-card, .why-us-item, .testimonial-card, .stat-item');
 
         const scrollRevealObserver = new IntersectionObserver((entries) => {
@@ -3828,7 +3813,6 @@
             scrollRevealObserver.observe(el);
         });
 
-        // Title Reveal Animation
         const slideTitles = document.querySelectorAll('.projects-title, .why-us-title, .about-title, .inside-infra-title, .image-gallery-title, .testimonials-title, .stats-title, .founder-main-title, .properties-showcase-title');
 
         const titleObserver = new IntersectionObserver((entries) => {
@@ -3847,7 +3831,6 @@
             titleObserver.observe(title);
         });
 
-        // Counter Animation (simplified)
         function animateCounter(el, target, duration = 1500) {
             const end = parseInt(target);
             const startTime = performance.now();
@@ -3880,38 +3863,27 @@
 
         statValues.forEach(stat => counterObserver.observe(stat));
 
-        // NOTE: Card glow pulse effects removed for performance
-
-        // Hero Image Slideshow for Desktop
         function initHeroSlideshow() {
             const slideshow = document.getElementById('heroSlideshow');
             if (!slideshow) return;
 
-            // Only run on desktop (768px+)
             if (window.innerWidth < 768) return;
 
             const slides = slideshow.querySelectorAll('.slide');
             if (slides.length === 0) return;
 
             let currentSlide = 0;
-            const slideInterval = 5000; // 5 seconds per slide
+            const slideInterval = 5000;
 
             function nextSlide() {
-                // Remove active class from current slide
                 slides[currentSlide].classList.remove('active');
-
-                // Move to next slide
                 currentSlide = (currentSlide + 1) % slides.length;
-
-                // Add active class to new slide
                 slides[currentSlide].classList.add('active');
             }
 
-            // Start the slideshow
             setInterval(nextSlide, slideInterval);
         }
 
-        // Initialize slideshow when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initHeroSlideshow);
         } else {
