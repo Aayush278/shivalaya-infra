@@ -1143,15 +1143,12 @@
             font-size: 0.8rem;
             letter-spacing: 4px;
             text-transform: uppercase;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #000000;
             font-weight: 600;
             margin-bottom: 1rem;
             display: inline-block;
             padding: 0.8rem 2rem;
-            border: 1px solid rgba(26, 71, 137, 0.3);
+            border: 1px solid rgb(181, 199, 24);
             border-radius: 50px;
             position: relative;
             backdrop-filter: blur(10px);
@@ -1165,6 +1162,10 @@
             background: rgba(26, 71, 137, 0.08);
             border-radius: 50px;
             z-index: -1;
+        }
+
+        .section-label.section-label-white {
+            color: #ffffff;
         }
 
         .section-subtitle {
@@ -1208,41 +1209,54 @@
         }
 
         .read-more-btn {
-            padding: 0.9rem 2rem;
-            background: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            font-size: 0.7rem;
+            padding: 1rem 2.5rem;
+            background: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+            color: #fff8e7;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
         }
 
         .read-more-btn:hover {
-            background: var(--primary-gold);
-            border-color: var(--primary-gold);
-            color: var(--white);
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: #ff9494;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 71, 137, 0.3);
         }
 
         .about-image {
             position: relative;
             overflow: hidden;
             margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .about-image img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
+            width: 80%;
+            max-width: 350px;
+            height: auto;
+            object-fit: contain;
             transition: transform 0.6s ease;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(26, 71, 137, 0.15);
+            background: #ffffff;
+            padding: 1rem;
         }
 
         .about-image:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .stats-section {
@@ -1434,7 +1448,7 @@
             font-family: 'Cormorant', Georgia, serif;
             letter-spacing: 2px;
             margin-bottom: 0.8rem;
-            color: var(--primary-blue);
+            color: #000000;
         }
 
         .project-description {
@@ -1552,34 +1566,55 @@
 
         .founder-credentials {
             margin-top: 2rem;
-            padding: 2rem;
-            background: rgba(26, 71, 137, 0.05);
-            border-left: 3px solid var(--primary-gold);
-            border-radius: 0 10px 10px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
 
-        .credential-item {
-            margin-bottom: 1.5rem;
+        .credential-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(26, 71, 137, 0.1);
+            box-shadow: 0 4px 15px rgba(26, 71, 137, 0.08);
+            transition: all 0.3s ease;
         }
 
-        .credential-item:last-child {
-            margin-bottom: 0;
+        .credential-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(26, 71, 137, 0.15);
+            border-color: var(--primary-gold);
         }
 
-        .credential-label {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
+        .credential-number {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-family: 'Cormorant', Georgia, serif;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-text {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: #1a1a1a;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
+            font-weight: 500;
         }
 
-        .credential-value {
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            line-height: 1.7;
-            color: #1a1a1a;
+        @media (min-width: 768px) {
+            .founder-credentials {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .credential-card {
+                padding: 2rem 1.5rem;
+            }
         }
 
         .why-us-section {
@@ -3086,42 +3121,80 @@
             <div class="projects-grid">
                 <div class="project-card fade-in">
                     <div class="project-image">
-                        <img src="Screenshot (124).png" alt="Shanti Vihar">
+                        <img src="Screenshot (124).png" alt="Shanti Bihar">
                     </div>
                     <div class="project-info">
-                        <div class="project-category">READY POSSESSION PLOTS • UJJAIN ROAD</div>
-                        <h3 class="project-title">Shanti Vihar</h3>
+                        <div class="project-category">READY POSSESSION PLOTS • MAGARKHEDA ROAD</div>
+                        <h3 class="project-title">Shanti Bihar</h3>
                         <p class="project-description">RERA Approved fully developed township with ready possession
-                            plots. Features RCC roads, majestic entrance gate, lush gardens. Near Airport, DPS Indore,
-                            Shishukunj School, Aurobindo Hospital. Bank loan facility available.</p>
+                            plots. Located near DPES School and Aurobindo Hospital, before toll plaza on Magarkheda
+                            Road.
+                            Features RCC roads, majestic entrance gate, lush gardens. Bank loan facility available.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-image">
-                        <img src="Screenshot (132).png" alt="Mangla classic and desire">
+                        <img src="Screenshot (132).png" alt="Classic Desire">
                     </div>
                     <div class="project-info">
                         <div class="project-category">PREMIUM APARTMENTS • INDORE</div>
-                        <h3 class="project-title">Mangla Desire & Mangla Classic</h3>
-                        <p class="project-description">Luxurious 2BHK, 2.5BHK & 3BHK apartments with premium amenities.
-                            Features modular kitchen, gymnasium, terrace garden, and 24/7 security. Prime location with
-                            excellent connectivity.</p>
+                        <h3 class="project-title">Classic Desire</h3>
+                        <p class="project-description">Luxurious 2 BHK & 3 BHK apartments with premium amenities.
+                            Features cricket turf, swimming pool, community hall, covered gym, indoor games, garden,
+                            terrace garden, and 24/7 security. Prime location with excellent connectivity.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-image">
-                        <img src="vidya.jpg" alt="Shri Vidhya Vihar">
+                        <img src="vidya.jpg" alt="Shree Vidhya Bihar">
                     </div>
                     <div class="project-info">
-                        <div class="project-category">LIG & EWS PLOTS • SANWER</div>
-                        <h3 class="project-title">Shri Vidhya Vihar</h3>
-                        <p class="project-description">Proposed residential colony at Village Badodiya Ema with LIG &
-                            EWS plots. Multiple plot sizes available (17'-25' width). 100-25 feet wide roads, near
+                        <div class="project-category">LIG & EWS PLOTS • SOLSINDA</div>
+                        <h3 class="project-title">Shree Vidhya Bihar</h3>
+                        <p class="project-description">Proposed residential colony at Village Solsinda with LIG &
+                            EWS plots. Multiple plot sizes available (17'-25' width). Road side 25 & 60 feet wide roads,
+                            near
                             Shishukunj School & Kashi Vishwanath Temple.</p>
+                        <a href="#contact" class="project-link">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="orion-sky.jpg" alt="Orion Sky">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-category">PREMIUM 1 BHK APARTMENTS • INDORE</div>
+                        <h3 class="project-title">Orion Sky</h3>
+                        <p class="project-description">Premium 1 BHK apartments (600 sq. ft.) in a secure gated
+                            community.
+                            Features CCTV surveillance, security guard, lift, power backup, and 24-hour water supply.
+                            Located near Aurobindo Hospital, just 5 minutes from Metro Station, surrounded by green
+                            parks,
+                            bike paths, and lifestyle spaces. Ideal for urban living and long-term investment.</p>
+                        <a href="#contact" class="project-link">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="orion-planet.jpg" alt="Orion Planet">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-category">RERA APPROVED • UJJAIN ROAD</div>
+                        <h3 class="project-title">Orion Planet</h3>
+                        <p class="project-description">RERA-approved premium residential project at Divya Vihar, Ujjain
+                            Road.
+                            Offers 1 BHK (600 sq. ft.) & 2 BHK apartments with smart layouts and all-corner flat
+                            planning.
+                            Gated community with CCTV, 24-hour security, lift, power backup, water supply, swimming
+                            pool,
+                            gym, landscaped garden, and multipurpose hall. Near Aurobindo Hospital, BSF Revati Range,
+                            5 minutes from Metro Station. Ideal for comfortable living and smart investment.</p>
                         <a href="#contact" class="project-link">Learn More →</a>
                     </div>
                 </div>
@@ -3160,15 +3233,29 @@
                 </p>
 
                 <div class="founder-credentials">
-                    <div class="credential-item">
-                        <div class="credential-label">INDUSTRY EXPERIENCE</div>
-                        <div class="credential-value">12+ Years in Real Estate<br>70+ Projects
-                            Delivered<br>1000+ Happy Families</div>
+                    <div class="credential-card">
+                        <div class="credential-number">12+</div>
+                        <div class="credential-text">Years in Real Estate</div>
                     </div>
-                    <div class="credential-item">
-                        <div class="credential-label">CERTIFICATIONS</div>
-                        <div class="credential-value">100% RERA Approved Projects<br>Transparent Business
-                            Practices<br>Quality Construction Standards</div>
+                    <div class="credential-card">
+                        <div class="credential-number">70+</div>
+                        <div class="credential-text">Projects Delivered</div>
+                    </div>
+                    <div class="credential-card">
+                        <div class="credential-number">1000+</div>
+                        <div class="credential-text">Happy Families</div>
+                    </div>
+                    <div class="credential-card">
+                        <div class="credential-number">100%</div>
+                        <div class="credential-text">RERA Approved</div>
+                    </div>
+                    <div class="credential-card">
+                        <div class="credential-number">✓</div>
+                        <div class="credential-text">Transparent Business</div>
+                    </div>
+                    <div class="credential-card">
+                        <div class="credential-number">★</div>
+                        <div class="credential-text">Quality Construction</div>
                     </div>
                 </div>
             </div>
@@ -3261,7 +3348,7 @@
     <section class="inside-infra-section">
         <div class="inside-infra-container">
             <div class="inside-infra-header fade-in">
-                <div class="section-label">BEHIND THE SCENES</div>
+                <div class="section-label section-label-white">BEHIND THE SCENES</div>
                 <h2 class="inside-infra-title">Inside Shivalay Infratech</h2>
                 <p class="inside-infra-subtitle">Experience our commitment to quality construction and see how we bring
                     your dream home to life</p>
@@ -3285,7 +3372,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="vertical-video-item fade-in" data-video="mc2.mp4">
+                <div class="vertical-video-item fade-in" data-video="mc2">
                     <div class="vertical-video-wrapper">
                         <img src="Screenshot (142).png" alt="Team">
                         <div class="video-play-overlay">
@@ -3311,7 +3398,7 @@
     <section class="properties-showcase-section">
         <div class="properties-showcase-container">
             <div class="properties-showcase-header fade-in">
-                <div class="section-label">VIRTUAL TOURS</div>
+                <div class="section-label section-label-white">VIRTUAL TOURS</div>
                 <h2 class="properties-showcase-title">Some Of Our Properties</h2>
                 <p class="properties-showcase-subtitle">Take an immersive video tour of our premium residential
                     developments</p>
@@ -3617,9 +3704,11 @@
             <div class="footer-section">
                 <h3>Projects</h3>
                 <ul class="footer-links">
-                    <li><a href="#projects">Shanti Vihar</a></li>
-                    <li><a href="#projects">Mangal classic and Mangal desire</a></li>
-
+                    <li><a href="#projects">Shanti Bihar</a></li>
+                    <li><a href="#projects">Classic Desire</a></li>
+                    <li><a href="#projects">Shree Vidhya Bihar</a></li>
+                    <li><a href="#projects">Orion Sky</a></li>
+                    <li><a href="#projects">Orion Planet</a></li>
                 </ul>
             </div>
 
@@ -3687,9 +3776,11 @@
                     <label class="form-label">Interested Project *</label>
                     <select class="form-select" id="project" required>
                         <option value="">Select a project</option>
-                        <option value="Shanti Vihar">Shanti Vihar - Ujjain Road</option>
-                        <option value="Shri Vidhya Vihar">Shri Vidhya Vihar - Sanwer</option>
-                        <option value="Mangla Desire & Classic">Mangla Desire & Mangla Classic</option>
+                        <option value="Shanti Bihar">Shanti Bihar - Magarkheda Road</option>
+                        <option value="Shree Vidhya Bihar">Shree Vidhya Bihar - Solsinda</option>
+                        <option value="Classic Desire">Classic Desire</option>
+                        <option value="Orion Sky">Orion Sky</option>
+                        <option value="Orion Planet">Orion Planet - Ujjain Road</option>
                         <option value="Other">Other / General Inquiry</option>
                     </select>
                 </div>
@@ -4105,4 +4196,3 @@
 </body>
 
 </html>
-
